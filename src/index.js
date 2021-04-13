@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './views/Root.js'
+import React, { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
+import App from './views/Root';
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById('root')
 );
-
-
