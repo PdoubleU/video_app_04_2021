@@ -5,13 +5,23 @@ import FormInput from './FormElements/Input';
 import FormLabel from './FormElements/Label';
 
 function AddForm({ clickHandler }) {
-  const [id, setID] = useState();
+  const [movieID, setMovieID] = useState('');
+
+  const handleID = (e) => {
+    setMovieID(e.target.value);
+  };
 
   return (
-    <Form inline onSubmit={(e) => clickHandler(e, id)}>
+    <Form inline onSubmit={(e) => clickHandler(e, movieID)}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <FormLabel>URL/ID</FormLabel>
-        <FormInput onchangeHandler={setID} />
+        <FormLabel id="url">URL/ID</FormLabel>
+        <FormInput
+          onchangeHandler={handleID}
+          value={movieID}
+          name="movieURL"
+          id="url"
+          placeholder="Type video url or id..."
+        />
         <FormButton />
       </FormGroup>
     </Form>
