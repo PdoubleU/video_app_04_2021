@@ -1,4 +1,4 @@
-import SearchBar from './Search';
+import AddForm from './AddForm/Form';
 import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
 
 function ToggleSearchBar({ clickHandler }) {
@@ -10,7 +10,7 @@ function ToggleSearchBar({ clickHandler }) {
       <UncontrolledCollapse toggler="#toggler">
         <Card>
           <CardBody>
-            <SearchBar clickHandler={clickHandler}></SearchBar>
+            <AddForm clickHandler={clickHandler}></AddForm>
           </CardBody>
         </Card>
       </UncontrolledCollapse>
