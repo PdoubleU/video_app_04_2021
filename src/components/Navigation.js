@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -8,18 +10,34 @@ import {
   NavLink,
 } from 'reactstrap';
 
-function Navi({ clickHandler, value }) {
+function Navi() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <Navbar color="inverse" light expand="md">
-      <NavbarBrand href="/">Video App</NavbarBrand>
-      <NavbarToggler onClick={clickHandler} />
-      <Collapse isOpen={value} navbar>
+      <NavbarBrand tag={Link} to="/">
+        Video App
+      </NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink href="/components/">Add new film</NavLink>
+            <NavLink tag={Link} to="/">
+              Add new film
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/">Load default list</NavLink>
+            <NavLink tag={Link} to="/movie-list">
+              Load default list
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/add-movie">
+              Load default list
+            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>

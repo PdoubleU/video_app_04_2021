@@ -1,57 +1,31 @@
 import React from 'react';
+import Wrapper from '../components/Wrapper';
+import ListOfMovies from './ListOfMovies';
+import AddMovie from './AddMovie';
+import Welcome from './Welcome';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/index.css';
-import Navi from '../components/Navigation.js';
-import Mainfooter from '../components/Mainfooter/Mainfooter.js';
-import ToggleSearchBar from '../components/ToogleSearchBar.js';
-import getMovie from '../api/request.js';
-import MoviesContainer from '../components/MoviesList/MoviesContainer';
 
-import { Container, Row, Col, Jumbotron } from 'reactstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false,
-      movieList: null,
-      userName: null,
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
-  render() {
-    return (
-      <div>
-        <Navi value={this.state.isOpen} clickHandler={this.toggle}></Navi>
-        <Jumbotron>
-          <Container>
-            <Row>
-              <Col>
-                <h1>Welcome </h1>
-                <ToggleSearchBar
-                  tag="a"
-                  color="success"
-                  size="large"
-                  target="_blank"
-                  clickHandler={getMovie}
-                >
-                  Add movies from YouTube or Vimeo
-                </ToggleSearchBar>
-              </Col>
-            </Row>
-          </Container>
-        </Jumbotron>
-        <MoviesContainer />
-        <Mainfooter />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router>
+      <Wrapper>
+        <Switch>
+          <Route path="/" exact>
+            <Welcome />
+          </Route>
+          <Route path="/movie-list" exact>
+            <ListOfMovies />
+          </Route>
+          <Route path="/add-movie" exact>
+            <AddMovie />
+          </Route>
+        </Switch>
+      </Wrapper>
+    </Router>
+  );
+};
 
 export default App;
