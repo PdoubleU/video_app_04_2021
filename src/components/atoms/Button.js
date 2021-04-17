@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
-function FormButton(props) {
+function ButtonModel({ id, type }) {
   return (
-    <Button type="submit" target="_blank">
+    <Button type="submit" target="_blank" id={id}>
       Submit
     </Button>
   );
 }
 
-FormButton.propTypes = {};
+ButtonModel.propTypes = {};
 
-export default FormButton;
+export default ButtonModel;

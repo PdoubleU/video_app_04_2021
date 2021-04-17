@@ -25,17 +25,12 @@ function Navi() {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink tag={Link} to="/">
+            <NavLink tag={Link} to="/add-movie" onClick={toggle}>
               Add new film
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to="/movie-list">
-              Load default list
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to="/add-movie">
+            <NavLink tag={Link} to="/movie-list" onClick={toggle}>
               Load default list
             </NavLink>
           </NavItem>

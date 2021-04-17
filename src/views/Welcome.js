@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MainView from '../components/organisms/MainView';
 
 function Welcome(props) {
-  return (
-    <div>
-      <h2>Welcome in your movies' database!</h2>
-    </div>
-  );
+  return <MainView />;
 }
 
 Welcome.propTypes = {};

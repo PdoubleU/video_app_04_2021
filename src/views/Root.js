@@ -1,5 +1,5 @@
 import React from 'react';
-import Wrapper from '../components/Wrapper';
+import MainTemplate from '../components/organisms/MainTemplate';
 import ListOfMovies from './ListOfMovies';
 import AddMovie from './AddMovie';
 import Welcome from './Welcome';
@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const App = () => {
   return (
     <Router>
-      <Wrapper>
+      <MainTemplate>
         <Switch>
           <Route path="/" exact>
             <Welcome />
@@ -23,7 +23,7 @@ const App = () => {
             <AddMovie />
           </Route>
         </Switch>
-      </Wrapper>
+      </MainTemplate>
     </Router>
   );
 };

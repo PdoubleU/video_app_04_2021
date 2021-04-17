@@ -1,5 +1,4 @@
 import { Col, CardFooter } from 'reactstrap';
-import styles from './mainfooter.module.css';
 
 function Mainfooter() {
   return (
@@ -8,9 +7,7 @@ function Mainfooter() {
         <span className="text-muted address">
           Place sticky footer content here.
         </span>
-        <span className={styles.address}>
-          Place sticky footer content here.
-        </span>
+        <span>Place sticky footer content here.</span>
       </Col>
     </CardFooter>
   );
