@@ -7,7 +7,6 @@ function Mainfooter() {
         <span className="text-muted address">
           Place sticky footer content here.
         </span>
-        <span>Place sticky footer content here.</span>
       </Col>
     </CardFooter>
   );

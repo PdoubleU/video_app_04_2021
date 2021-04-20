@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Form, FormGroup } from 'reactstrap';
+import ButtonModel from '../atoms/Button';
+import InputModel from '../atoms/Input';
+import LabelModel from '../atoms/Label';
 
 function FirstVisit() {
   const [user, setUser] = useState();
@@ -7,19 +11,23 @@ function FirstVisit() {
   const submitName = () => {
     window.localStorage.setItem('user', user);
   };
+  const handleInputChange = (e) => {
+    setUser(e.target.value);
+  };
 
   return (
-    <>
-      <h2>Hi, buddy! What's your name?</h2>
-      <form onSubmit={submitName}>
-        <input
-          type="text"
-          placeholder="name"
-          onChange={(e) => setUser(e.target.value)}
-        ></input>
-        <button type="submit">Enter</button>
-      </form>
-    </>
+    <Form inline onSubmit={submitName}>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <LabelModel id="user">Hi, buddy! Whats' your name?</LabelModel>
+        <InputModel
+          name="movieURL"
+          id="user"
+          placeholder="Enter your name..."
+          onchangeHandler={handleInputChange}
+        />
+        <ButtonModel type="submit" value="Enter" />
+      </FormGroup>
+    </Form>
   );
 }
 

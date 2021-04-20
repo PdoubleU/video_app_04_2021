@@ -1,21 +1,20 @@
-import AddMovieForm from './AddMovieForm';
+import AddMovieForm from '../molecules/AddMovieForm';
 import ButtonModel from '../atoms/Button';
+import getMovie from '../../api/request';
 import { UncontrolledCollapse, CardBody, Card } from 'reactstrap';
 
-function ToggleSearchBar({ clickHandler }) {
+function ToggleSearchBar() {
   return (
-    <div>
-      <ButtonModel color="primary" id="toggler">
-        Add movie
-      </ButtonModel>
+    <>
+      <ButtonModel color="primary" id="toggler" value="Roll down..." />
       <UncontrolledCollapse toggler="#toggler">
         <Card>
           <CardBody>
-            <AddMovieForm clickHandler={clickHandler}></AddMovieForm>
+            <AddMovieForm clickHandler={getMovie}></AddMovieForm>
           </CardBody>
         </Card>
       </UncontrolledCollapse>
-    </div>
+    </>
   );
 }
 

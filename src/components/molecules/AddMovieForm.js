@@ -22,7 +22,7 @@ function AddForm({ clickHandler }) {
           id="url"
           placeholder="Type video url or id..."
         />
-        <ButtonModel />
+        <ButtonModel type="submit" value="Get movie!" />
       </FormGroup>
     </Form>
   );

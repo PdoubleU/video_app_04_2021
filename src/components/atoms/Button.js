@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
-function ButtonModel({ id, type }) {
+function ButtonModel({ id, type, value = 'Hit enter!' }) {
   return (
-    <Button type="submit" target="_blank" id={id}>
-      Submit
+    <Button type={type} target="_blank" id={id}>
+      {value}
     </Button>
   );
 }
