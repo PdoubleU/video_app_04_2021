@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import ButtonModel from '../../atoms/Button';
 
 function RemoveButton(props) {
-  return <Button>Remove from list</Button>;
+  return <ButtonModel value="Remove from list" />;
 }
 
 RemoveButton.propTypes = {};

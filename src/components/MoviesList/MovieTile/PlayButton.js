@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import ButtonModel from '../../atoms/Button';
 
 function PlayButton(props) {
-  return <Button>Button</Button>;
+  return <ButtonModel value="Play" />;
 }
 
 PlayButton.propTypes = {};

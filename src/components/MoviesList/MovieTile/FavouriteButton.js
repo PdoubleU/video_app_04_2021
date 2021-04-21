@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import ButtonModel from '../../atoms/Button';
 
 const ADD_TO_FAVS = 'Add to favourites',
   RM_FROM_FAVS = 'Remove from favourites';
@@ -14,7 +14,10 @@ function FavouriteButton(props) {
   }, [isFavourite]);
 
   return (
-    <Button onClick={() => setIsFavourite(!isFavourite)}>{currentValue}</Button>
+    <ButtonModel
+      handleClick={() => setIsFavourite(!isFavourite)}
+      value={currentValue}
+    />
   );
 }
 

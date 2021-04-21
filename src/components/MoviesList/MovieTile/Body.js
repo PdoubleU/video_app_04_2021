@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayButton from './PlayButton';
 import FavouriteButton from './FavouriteButton';
+import RemoveButton from './RemoveButton';
 import { CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 function Body(props) {
@@ -17,6 +18,7 @@ function Body(props) {
       </CardText>
       <PlayButton />
       <FavouriteButton />
+      <RemoveButton />
     </CardBody>
   );
 }
