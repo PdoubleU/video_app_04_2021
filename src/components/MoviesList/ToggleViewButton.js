@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import ButtonModel from '../atoms/Button';
 
 function ToggleViewButton(props) {
   const [TILES, LIST] = ['Display tiles', 'Display list'];
@@ -12,7 +12,16 @@ function ToggleViewButton(props) {
     setBtnValue(viewTiles ? LIST : TILES);
   }, [viewTiles]);
 
-  return <Button onClick={() => setViewTiles(!viewTiles)}>{btnValue}</Button>;
+  const handleView = () => {
+    setViewTiles(!viewTiles);
+  };
+
+  return (
+    <>
+      <ButtonModel handleClick={handleView} value={btnValue} />
+      <ButtonModel handleClick={() => console.log('test')} value="Show demo" />
+    </>
+  );
 }
 
 ToggleViewButton.propTypes = {};

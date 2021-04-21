@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ToggleSearchBar from '../components/organisms/ToogleSearchBar';
 
-function AddMovie(props) {
+function AddMovie() {
   return <ToggleSearchBar />;
 }
 

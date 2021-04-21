@@ -9,6 +9,8 @@ function NextVisit({ name }) {
   );
 }
 
-NextVisit.propTypes = {};
+NextVisit.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default NextVisit;

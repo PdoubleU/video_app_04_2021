@@ -4,7 +4,7 @@ import { CardImg } from 'reactstrap';
 import IMG_URL from '../../../assets/temporaryImgTemplates';
 
 function Image(props) {
-  return <CardImg top width="25%" src={IMG_URL.small} alt="Card image cap" />;
+  return <CardImg top width="25%" src={IMG_URL.large} alt="Card image cap" />;
 }
 
 Image.propTypes = {};

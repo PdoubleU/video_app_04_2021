@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, FormGroup } from 'reactstrap';
 import ButtonModel from '../atoms/Button';
 import InputModel from '../atoms/Input';
 import LabelModel from '../atoms/Label';
+import { MoviesContext } from '../../providers/MoviesProvider';
 
 function AddForm({ clickHandler }) {
   const [movieID, setMovieID] = useState('');
+  const context = useContext(MoviesContext);
 
   const handleID = (e) => {
     setMovieID(e.target.value);
@@ -22,7 +24,11 @@ function AddForm({ clickHandler }) {
           id="url"
           placeholder="Type video url or id..."
         />
-        <ButtonModel type="submit" value="Get movie!" />
+        <ButtonModel
+          handleClick={context.addMovie}
+          type="submit"
+          value="Get movie!"
+        />
       </FormGroup>
     </Form>
   );

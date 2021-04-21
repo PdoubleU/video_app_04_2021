@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+
 import { Form, FormGroup } from 'reactstrap';
 import ButtonModel from '../atoms/Button';
 import InputModel from '../atoms/Input';
@@ -30,7 +30,5 @@ function FirstVisit() {
     </Form>
   );
 }
-
-FirstVisit.propTypes = {};
 
 export default FirstVisit;

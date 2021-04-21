@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FirstVisit from '../molecules/FirstVisit';
 import NextVisit from '../molecules/NextVisit';
 
-function MainView(props) {
+let user = window.localStorage.getItem('user');
+function MainView() {
   const [userName, setUserName] = useState();
 
-  let user = window.localStorage.getItem('user');
-
   useEffect(() => {
-    if (user) {
-      setUserName(user);
-    }
-  });
+    setUserName(user);
+  }, []);
+
   return (
     <div>
       {!user ? <FirstVisit /> : <NextVisit name={userName} />}
@@ -27,7 +24,5 @@ function MainView(props) {
     </div>
   );
 }
-
-MainView.propTypes = {};
 
 export default MainView;

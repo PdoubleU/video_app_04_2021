@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import MainView from '../components/organisms/MainView';
 
-function Welcome(props) {
+function Welcome() {
   return <MainView />;
 }
 
