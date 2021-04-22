@@ -14,7 +14,7 @@ function AddForm({ clickHandler }) {
   };
 
   return (
-    <Form inline onSubmit={(e) => clickHandler(e, movieID)}>
+    <Form inline onSubmit={(e) => context.addMovie(e)}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <LabelModel id="url">URL/ID</LabelModel>
         <InputModel
@@ -24,11 +24,7 @@ function AddForm({ clickHandler }) {
           id="url"
           placeholder="Type video url or id..."
         />
-        <ButtonModel
-          handleClick={context.addMovie}
-          type="submit"
-          value="Get movie!"
-        />
+        <ButtonModel type="submit" value="Get movie!" />
       </FormGroup>
     </Form>
   );

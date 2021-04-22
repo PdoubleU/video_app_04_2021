@@ -1,6 +1,5 @@
 import AddMovieForm from '../molecules/AddMovieForm';
 import ButtonModel from '../atoms/Button';
-import getMovie from '../../api/request';
 import { UncontrolledCollapse, CardBody, Card } from 'reactstrap';
 
 function ToggleSearchBar() {
@@ -10,7 +9,7 @@ function ToggleSearchBar() {
       <UncontrolledCollapse toggler="#toggler">
         <Card>
           <CardBody>
-            <AddMovieForm clickHandler={getMovie}></AddMovieForm>
+            <AddMovieForm />
           </CardBody>
         </Card>
       </UncontrolledCollapse>
