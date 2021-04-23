@@ -1,8 +1,8 @@
 import React from 'react';
 import MainTemplate from '../components/organisms/MainTemplate';
-import ListOfMovies from './ListOfMovies';
-import AddMovie from './AddMovie';
-import Welcome from './Welcome';
+import ListOfMovies from './ListView';
+import AddMovie from './AddMovieView';
+import Welcome from './GreetingView';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

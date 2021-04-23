@@ -5,6 +5,4 @@ function AddMovie() {
   return <ToggleSearchBar />;
 }
 
-AddMovie.propTypes = {};
-
 export default AddMovie;

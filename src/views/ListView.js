@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from '../components/MoviesList/MoviesContainer';
+import MovieList from '../components/organisms/MoviesList';
 
 function ListOfMovies() {
   return <MovieList />;

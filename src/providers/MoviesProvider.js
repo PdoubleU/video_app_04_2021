@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import useFetchData from '../hooks/fetchData';
+import { DEMO_YOUTUBE } from '../constans';
 
-const ID = 'oEduJBcMdsA';
+// id uvreEda20fs
 
 export const MoviesContext = React.createContext({
   movies: [],
@@ -12,38 +13,56 @@ export const MoviesContext = React.createContext({
 });
 
 export const MoviesProvider = ({ children }) => {
-  const [getData, setGetData] = useState(false);
-  const [{ data, isLoading, isError }, setId] = useFetchData();
+  const [storedMovies, setStoredMovies] = useState(
+    JSON.parse(window.localStorage.getItem('movies'))
+  );
+  const [{ data, isLoading, isError, fetchData }] = useFetchData();
 
-  const movies = () => {
-    console.log('fetch data');
+  useEffect(() => {
+    addMovie(data);
+  }, [data]);
+  useEffect(() => {
+    saveInStorage(); //// here is problem!!!!
+  }, [storedMovies]);
+
+  const saveInStorage = () => {
+    window.localStorage.setItem('movies', JSON.stringify(storedMovies));
+  };
+
+  const addMovie = (data) => {
+    if (!data) return;
+    storedMovies
+      ? setStoredMovies([...storedMovies, data])
+      : setStoredMovies([data]);
+  };
+  const getMovieData = (e, api, id) => {
+    e.preventDefault();
+    fetchData(id, api);
+  };
+  const getStoredMovies = (data) => {
+    if (!storedMovies) return false;
+    return storedMovies;
   };
   const deleteMovie = () => {
-    console.log('delete movie');
-  };
-  const addMovie = (e) => {
-    e.preventDefault();
-    console.log('add movie');
-    setId(ID);
+    //console.log('delete movie');
   };
   const addFavourite = () => {
-    console.log('add to favs');
+    //console.log('add to favs');
   };
-
   const removeFavourite = () => {
-    console.log('remove from favs');
+    //console.log('remove from favs');
   };
   return (
     <MoviesContext.Provider
       value={{
-        movies,
+        getStoredMovies,
         deleteMovie,
-        addMovie,
+        getMovieData,
         addFavourite,
         removeFavourite,
       }}
     >
-      {isLoading ? <div>Loading ...</div> : <div>I have got data!</div>}
+      {isLoading && <div>Loading ...</div>}
       {children}
     </MoviesContext.Provider>
   );
