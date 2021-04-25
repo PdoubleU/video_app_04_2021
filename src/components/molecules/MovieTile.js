@@ -7,7 +7,7 @@ function MovieTile({ id, title, description, thumbnails }) {
   return (
     <div>
       <Card id={id}>
-        <Image url={thumbnails.maxres.url} />
+        <Image url={thumbnails.high.url} />
         <CardModel id={id} title={title} description={description} />
       </Card>
     </div>

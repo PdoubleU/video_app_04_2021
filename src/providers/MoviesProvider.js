@@ -22,7 +22,9 @@ export const MoviesProvider = ({ children }) => {
   useEffect(() => {
     addMovie(data);
   }, [data]);
+
   useEffect(() => {
+    console.log('set storeage');
     saveInStorage();
   }, [storedMovies]);
 
@@ -36,24 +38,43 @@ export const MoviesProvider = ({ children }) => {
       ? setStoredMovies([...storedMovies, data])
       : setStoredMovies([data]);
   };
+
   const getMovieData = (e, api, id) => {
     e.preventDefault();
+    // check if item with provided id exists in the memory and return if true (not duplicate items)
+    if (
+      storedMovies.some((item) => {
+        return item.id === id;
+      })
+    )
+      return;
     fetchData(id, api);
   };
+
   const getStoredMovies = () => {
     if (!storedMovies) return false;
     return storedMovies;
   };
+
   const deleteMovie = (e) => {
     e.preventDefault();
-    console.log('delete movie', e.target.offsetParent.id);
+    let id = e.target.offsetParent.id;
+    let tmpList = JSON.parse(JSON.stringify(storedMovies));
+    let index = tmpList.findIndex((item) => {
+      return item.id === id;
+    });
+    tmpList.splice(index, 1);
+    setStoredMovies(tmpList);
   };
+
   const addFavourite = () => {
     //console.log('add to favs');
   };
+
   const removeFavourite = () => {
     //console.log('remove from favs');
   };
+
   return (
     <MoviesContext.Provider
       value={{
