@@ -4,10 +4,9 @@ import Image from '../atoms/Image';
 import { Card } from 'reactstrap';
 
 function MovieTile({ id, title, description, thumbnails }) {
-  console.log(thumbnails);
   return (
     <div>
-      <Card>
+      <Card id={id}>
         <Image url={thumbnails.maxres.url} />
         <CardModel id={id} title={title} description={description} />
       </Card>
@@ -15,6 +14,11 @@ function MovieTile({ id, title, description, thumbnails }) {
   );
 }
 
-MovieTile.propTypes = {};
+MovieTile.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  thumbnails: PropTypes.object.isRequired,
+};
 
 export default MovieTile;

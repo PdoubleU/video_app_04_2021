@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { Form, FormGroup } from 'reactstrap';
 import ButtonModel from '../atoms/Button';
 import InputModel from '../atoms/Input';
@@ -18,11 +17,13 @@ function FirstVisit() {
   return (
     <Form inline onSubmit={submitName}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <LabelModel id="user">Hi, buddy! Whats' your name?</LabelModel>
+        <LabelModel id="user" labelName="Hi, buddy! Whats' your name?" />
         <InputModel
           name="movieURL"
           id="user"
+          type="text"
           placeholder="Enter your name..."
+          value="userName"
           onchangeHandler={handleInputChange}
         />
         <ButtonModel type="submit" value="Enter" />

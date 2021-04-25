@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
 import MovieTile from '../molecules/MovieTile';
 import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
 
-function MovieList(props) {
+function MovieList() {
   // logic to handle with view tiles or list
   const [TILES, LIST] = ['Display tiles', 'Display list'];
   const context = useContext(MoviesContext);
@@ -39,7 +38,5 @@ function MovieList(props) {
     </>
   );
 }
-
-MovieList.propTypes = {};
 
 export default MovieList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Navi from './Navigation.js';
 import Mainfooter from '../molecules/Mainfooter.js';
 
@@ -11,5 +12,9 @@ function MainTemplate({ children }) {
     </>
   );
 }
+
+MainTemplate.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default MainTemplate;

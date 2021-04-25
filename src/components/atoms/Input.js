@@ -22,6 +22,13 @@ function FormInput({
   );
 }
 
-FormInput.propTypes = {};
+FormInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onchangeHandler: PropTypes.func,
+};
 
 export default FormInput;

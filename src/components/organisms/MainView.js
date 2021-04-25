@@ -5,6 +5,7 @@ import FirstVisit from '../molecules/FirstVisit';
 import NextVisit from '../molecules/NextVisit';
 
 let user = window.localStorage.getItem('user');
+
 function MainView() {
   const [userName, setUserName] = useState();
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import useFetchData from '../hooks/fetchData';
 import { DEMO_YOUTUBE } from '../constans';
 
@@ -22,7 +23,7 @@ export const MoviesProvider = ({ children }) => {
     addMovie(data);
   }, [data]);
   useEffect(() => {
-    saveInStorage(); //// here is problem!!!!
+    saveInStorage();
   }, [storedMovies]);
 
   const saveInStorage = () => {
@@ -39,12 +40,13 @@ export const MoviesProvider = ({ children }) => {
     e.preventDefault();
     fetchData(id, api);
   };
-  const getStoredMovies = (data) => {
+  const getStoredMovies = () => {
     if (!storedMovies) return false;
     return storedMovies;
   };
-  const deleteMovie = () => {
-    //console.log('delete movie');
+  const deleteMovie = (e) => {
+    e.preventDefault();
+    console.log('delete movie', e.target.offsetParent.id);
   };
   const addFavourite = () => {
     //console.log('add to favs');
@@ -66,4 +68,8 @@ export const MoviesProvider = ({ children }) => {
       {children}
     </MoviesContext.Provider>
   );
+};
+
+MoviesProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };

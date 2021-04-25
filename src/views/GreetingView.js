@@ -5,5 +5,4 @@ function Welcome() {
   return <MainView />;
 }
 
-Welcome.propTypes = {};
 export default Welcome;
