@@ -10,7 +10,8 @@ function useFetchData() {
     setKey(process.env.REACT_APP_YOUTUBE_API_KEY);
   }, []);
 
-  const fetchData = (id, api) => {
+  const fetchData = (url, id) => {
+    console.log(url);
     setIsLoading(true);
     fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${key}`

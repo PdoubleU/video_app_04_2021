@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFetchData from '../hooks/fetchData';
-import { DEMO_YOUTUBE } from '../constans';
-
-// id uvreEda20fs
+import { inputFilter } from '../helpers';
 
 export const MoviesContext = React.createContext({
   movies: [],
@@ -39,16 +37,20 @@ export const MoviesProvider = ({ children }) => {
       : setStoredMovies([data]);
   };
 
-  const getMovieData = (e, api, id) => {
+  const getMovieData = (e, input) => {
     e.preventDefault();
+    const [url, id] = inputFilter(input);
     // check if item with provided id exists in the memory and return if true (not duplicate items)
     if (
       storedMovies.some((item) => {
+        console.log(item.id);
+        console.log(id);
         return item.id === id;
       })
     )
       return;
-    fetchData(id, api);
+
+    fetchData(url, id);
   };
 
   const getStoredMovies = () => {
@@ -93,4 +95,8 @@ export const MoviesProvider = ({ children }) => {
 
 MoviesProvider.propTypes = {
   children: PropTypes.element.isRequired,
+};
+
+inputFilter.propTypes = {
+  input: PropTypes.string.isRequired,
 };
