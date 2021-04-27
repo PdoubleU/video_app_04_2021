@@ -8,6 +8,7 @@ function MovieList() {
   const [TILES, LIST] = ['Display tiles', 'Display list'];
   const context = useContext(MoviesContext);
   const data = context.getStoredMovies();
+  console.log(data);
 
   const [viewTiles, setViewTiles] = useState(true);
   const [btnValue, setBtnValue] = useState('Change display');
@@ -23,17 +24,21 @@ function MovieList() {
     <>
       <ButtonModel handleClick={handleView} value={btnValue} />
       <ButtonModel handleClick={() => console.log('test')} value="Show demo" />
-      <div>
-        {data.map((movieData) => (
-          <MovieTile
-            key={movieData.id}
-            id={movieData.id}
-            title={movieData.snippet.title}
-            description={movieData.snippet.title}
-            thumbnails={movieData.snippet.thumbnails}
-          />
-        ))}
-      </div>
+      {!data ? (
+        <h6>No movies, add some to your list</h6>
+      ) : (
+        <div>
+          {data.map((movieData) => (
+            <MovieTile
+              key={movieData.id}
+              id={movieData.id}
+              title={movieData.snippet.title}
+              description={movieData.snippet.title}
+              thumbnails={movieData.snippet.thumbnails}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 }

@@ -13,9 +13,11 @@ export const MoviesContext = React.createContext({
 
 export const MoviesProvider = ({ children }) => {
   const [storedMovies, setStoredMovies] = useState(
-    JSON.parse(window.localStorage.getItem('movies'))
+    JSON.parse(window.localStorage.getItem('movies') || null)
   );
   const [{ data, isLoading, isError, fetchData }] = useFetchData();
+
+  console.log(storedMovies);
 
   useEffect(() => {
     addMovie(data);
@@ -42,11 +44,13 @@ export const MoviesProvider = ({ children }) => {
     const [url, id] = inputFilter(input);
     // check if item with provided id exists in the memory and return if true (not duplicate items)
     if (
-      storedMovies.some((item) => {
-        console.log(item.id);
-        console.log(id);
-        return item.id === id;
-      })
+      storedMovies
+        ? storedMovies.some((item) => {
+            console.log(item.id);
+            console.log(id);
+            return item.id === id;
+          })
+        : null
     )
       return;
 
