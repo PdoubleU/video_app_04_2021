@@ -1,8 +1,8 @@
 import React from 'react';
-import ToggleSearchBar from '../components/organisms/ToogleSearchBar';
+import AddMovieForm from '../components/molecules/AddMovieForm';
 
 function AddMovie() {
-  return <ToggleSearchBar />;
+  return <AddMovieForm />;
 }
 
 export default AddMovie;

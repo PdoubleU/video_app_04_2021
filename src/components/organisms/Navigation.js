@@ -16,6 +16,7 @@ function Navi() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <Navbar color="inverse" light expand="md">
       <NavbarBrand tag={Link} to="/">

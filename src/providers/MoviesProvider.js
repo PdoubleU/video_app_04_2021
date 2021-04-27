@@ -17,14 +17,11 @@ export const MoviesProvider = ({ children }) => {
   );
   const [{ data, isLoading, isError, fetchData }] = useFetchData();
 
-  console.log(storedMovies);
-
   useEffect(() => {
     addMovie(data);
   }, [data]);
 
   useEffect(() => {
-    console.log('set storeage');
     saveInStorage();
   }, [storedMovies]);
 
@@ -34,6 +31,7 @@ export const MoviesProvider = ({ children }) => {
 
   const addMovie = (data) => {
     if (!data) return;
+    console.log('movie added');
     storedMovies
       ? setStoredMovies([...storedMovies, data])
       : setStoredMovies([data]);
@@ -46,14 +44,13 @@ export const MoviesProvider = ({ children }) => {
     if (
       storedMovies
         ? storedMovies.some((item) => {
-            console.log(item.id);
-            console.log(id);
             return item.id === id;
           })
         : null
     )
       return;
 
+    console.log('lets fetch data');
     fetchData(url, id);
   };
 
@@ -73,12 +70,15 @@ export const MoviesProvider = ({ children }) => {
     setStoredMovies(tmpList);
   };
 
-  const addFavourite = () => {
-    //console.log('add to favs');
-  };
-
-  const removeFavourite = () => {
-    //console.log('remove from favs');
+  const toggleLike = (e) => {
+    e.preventDefault();
+    let id = e.target.offsetParent.id;
+    let tmpList = JSON.parse(JSON.stringify(storedMovies));
+    let index = tmpList.findIndex((item) => {
+      return item.id === id;
+    });
+    tmpList[index].isLiked = !tmpList[index].isLiked;
+    setStoredMovies(tmpList);
   };
 
   return (
@@ -87,8 +87,7 @@ export const MoviesProvider = ({ children }) => {
         getStoredMovies,
         deleteMovie,
         getMovieData,
-        addFavourite,
-        removeFavourite,
+        toggleLike,
       }}
     >
       {isLoading && <div>Loading ...</div>}
@@ -99,8 +98,4 @@ export const MoviesProvider = ({ children }) => {
 
 MoviesProvider.propTypes = {
   children: PropTypes.element.isRequired,
-};
-
-inputFilter.propTypes = {
-  input: PropTypes.string.isRequired,
 };

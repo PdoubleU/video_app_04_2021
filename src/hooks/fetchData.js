@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { personalizeDataObject } from '../helpers';
 
 function useFetchData() {
   const [data, setData] = useState();
@@ -11,14 +12,13 @@ function useFetchData() {
   }, []);
 
   const fetchData = (url, id) => {
-    console.log(url);
     setIsLoading(true);
     fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${key}`
     )
       .then((response) => {
         response.json().then((data) => {
-          setData(data.items[0]);
+          setData(personalizeDataObject(data.items[0]));
           setIsLoading(false);
         });
       })
