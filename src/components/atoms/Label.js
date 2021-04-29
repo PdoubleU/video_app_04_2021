@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Label } from 'reactstrap';
 
-function FormLabel({ id, labelValue }) {
+function FormLabel({ id = '', labelValue = '' }) {
   return <Label htmlFor={id}>{labelValue}</Label>;
 }
 

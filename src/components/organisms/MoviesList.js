@@ -8,6 +8,7 @@ function MovieList() {
   const [TILES, LIST] = ['Display tiles', 'Display list'];
   const context = useContext(MoviesContext);
   const data = context.getStoredMovies();
+  console.log(data);
 
   const [viewTiles, setViewTiles] = useState(true);
   const [btnValue, setBtnValue] = useState('Change display');
@@ -32,7 +33,7 @@ function MovieList() {
               key={movieData.id}
               id={movieData.id}
               title={movieData.snippet.title}
-              date={movieData.snippet.title}
+              date={movieData.addDate}
               views={movieData.statistics.viewCount}
               likes={movieData.statistics.likeCount}
               thumbnails={movieData.snippet.thumbnails}

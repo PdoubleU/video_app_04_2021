@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 
 function ButtonModel({
   handleClick,
-  id,
+  id = '',
   type = 'button',
   value = 'Hit enter!',
 }) {

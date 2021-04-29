@@ -4,11 +4,10 @@ import useFetchData from '../hooks/fetchData';
 import { inputFilter } from '../helpers';
 
 export const MoviesContext = React.createContext({
-  movies: [],
+  getStoredMovies: [],
   deleteMovie: () => {},
-  addMovie: () => {},
-  addFavourite: () => {},
-  removeFavourite: () => {},
+  getMovieData: () => {},
+  toggleLike: () => {},
 });
 
 export const MoviesProvider = ({ children }) => {
@@ -19,6 +18,7 @@ export const MoviesProvider = ({ children }) => {
 
   useEffect(() => {
     addMovie(data);
+    // after reload, if we previously got some data, the component is adding movie again (duplicate)
   }, [data]);
 
   useEffect(() => {
@@ -40,6 +40,7 @@ export const MoviesProvider = ({ children }) => {
   const getMovieData = (e, input) => {
     e.preventDefault();
     const [url, id] = inputFilter(input);
+    if (!url && !id) return;
     // check if item with provided id exists in the memory and return if true (not duplicate items)
     if (
       storedMovies

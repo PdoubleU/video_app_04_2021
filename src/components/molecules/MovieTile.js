@@ -3,7 +3,7 @@ import CardModel from './CardModel';
 import Image from '../atoms/Image';
 import { Card } from 'reactstrap';
 
-function MovieTile({ thumbnails, id, ...restProps }) {
+function MovieTile({ thumbnails = {}, id = '', ...restProps }) {
   return (
     <div>
       <Card id={id}>

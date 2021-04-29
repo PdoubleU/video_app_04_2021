@@ -7,12 +7,8 @@ import NextVisit from '../molecules/NextVisit';
 let user = window.localStorage.getItem('user');
 
 function MainView() {
-  const [userName, setUserName] = useState();
-
-  useEffect(() => {
-    setUserName(user);
-  }, []);
-
+  const [userName] = useState(user);
+  console.log(typeof userName);
   return (
     <div>
       {!user ? <FirstVisit /> : <NextVisit name={userName} />}

@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-function FormInput({ name, id, type = 'text', placeholder, onchangeHandler }) {
+function FormInput({
+  name = '',
+  id = '',
+  type = 'text',
+  placeholder,
+  onchangeHandler,
+}) {
   return (
     <Input
       name={name}
