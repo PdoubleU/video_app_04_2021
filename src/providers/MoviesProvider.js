@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFetchData from '../hooks/fetchData';
 import { inputFilter } from '../helpers';
+import { DEMO_YOUTUBE } from '../constans';
 
 export const MoviesContext = React.createContext({
   getStoredMovies: [],
   deleteMovie: () => {},
   getMovieData: () => {},
   toggleLike: () => {},
+  loadDemo: () => {},
+  emptyList: () => {},
 });
 
 export const MoviesProvider = ({ children }) => {
@@ -18,7 +21,6 @@ export const MoviesProvider = ({ children }) => {
 
   useEffect(() => {
     addMovie(data);
-    // after reload, if we previously got some data, the component is adding movie again (duplicate)
   }, [data]);
 
   useEffect(() => {
@@ -38,8 +40,9 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const getMovieData = (e, input) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const [url, id] = inputFilter(input);
+    // exit function in case of empty/bad id string:
     if (!url && !id) return;
     // check if item with provided id exists in the memory and return if true (not duplicate items)
     if (
@@ -56,7 +59,7 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const getStoredMovies = () => {
-    if (!storedMovies) return false;
+    if (!storedMovies) return;
     return storedMovies;
   };
 
@@ -82,6 +85,18 @@ export const MoviesProvider = ({ children }) => {
     setStoredMovies(tmpList);
   };
 
+  const emptyList = (e) => {
+    e.preventDefault();
+    setStoredMovies(null);
+  };
+
+  const loadDemo = (e) => {
+    e.preventDefault();
+    DEMO_YOUTUBE.forEach((elem) => {
+      getMovieData(null, elem);
+    });
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -89,6 +104,8 @@ export const MoviesProvider = ({ children }) => {
         deleteMovie,
         getMovieData,
         toggleLike,
+        emptyList,
+        loadDemo,
       }}
     >
       {isLoading && <div>Loading ...</div>}

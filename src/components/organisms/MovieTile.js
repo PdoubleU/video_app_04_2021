@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import CardModel from './CardModel';
+import CardModel from '../molecules/CardModel';
 import Image from '../atoms/Image';
 import { Card } from 'reactstrap';
 

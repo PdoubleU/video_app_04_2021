@@ -12,10 +12,10 @@ function MainView() {
   return (
     <div>
       {!user ? <FirstVisit /> : <NextVisit name={userName} />}
-      <Button tag={Link} to="/movie-list">
+      <Button tag={Link} to="/movie-list" id="loadList">
         Check your list
       </Button>
-      <Button tag={Link} to="/add-movie">
+      <Button tag={Link} to="/add-movie" id="openForm">
         Add new one
       </Button>
     </div>

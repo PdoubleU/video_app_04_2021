@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import MovieTile from '../molecules/MovieTile';
+import MovieTile from './MovieTile';
 import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
+import { Container, Row, Col } from 'reactstrap';
+import ListModel from '../molecules/ListModel';
 
 function MovieList() {
   // logic to handle with view tiles or list
   const [TILES, LIST] = ['Display tiles', 'Display list'];
   const context = useContext(MoviesContext);
   const data = context.getStoredMovies();
-  console.log(data);
 
   const [viewTiles, setViewTiles] = useState(true);
   const [btnValue, setBtnValue] = useState('Change display');
@@ -22,25 +23,60 @@ function MovieList() {
   };
   return (
     <>
-      <ButtonModel handleClick={handleView} value={btnValue} />
-      <ButtonModel handleClick={() => console.log('test')} value="Show demo" />
-      {!data ? (
-        <h6>No movies, add some to your list</h6>
+      <ButtonModel handleClick={handleView} value={btnValue} id="toggleView" />
+      <ButtonModel
+        handleClick={(e) => context.loadDemo(e)}
+        value="Show demo"
+        id="loadDemo"
+      />
+      <ButtonModel
+        handleClick={(e) => context.emptyList(e)}
+        value="Clear list"
+        id="clearList"
+      />
+      {!viewTiles ? (
+        <Container>
+          {!data ? (
+            <h6>No movies, add some to your list</h6>
+          ) : (
+            <>
+              {data.map((movieData) => (
+                <ListModel
+                  key={movieData.id}
+                  id={movieData.id}
+                  title={movieData.snippet.title}
+                  date={movieData.addDate}
+                  views={movieData.statistics.viewCount}
+                  likes={movieData.statistics.likeCount}
+                  thumbnails={movieData.snippet.thumbnails}
+                  liked={movieData.isLiked}
+                />
+              ))}
+            </>
+          )}
+        </Container>
       ) : (
-        <div>
-          {data.map((movieData) => (
-            <MovieTile
-              key={movieData.id}
-              id={movieData.id}
-              title={movieData.snippet.title}
-              date={movieData.addDate}
-              views={movieData.statistics.viewCount}
-              likes={movieData.statistics.likeCount}
-              thumbnails={movieData.snippet.thumbnails}
-              liked={movieData.isLiked}
-            />
-          ))}
-        </div>
+        <Container fluid="true">
+          {!data ? (
+            <h6>No movies, add some to your list</h6>
+          ) : (
+            <Row xs="1" md="2" lg="4" xl="10">
+              {data.map((movieData) => (
+                <Col key={movieData.id}>
+                  <MovieTile
+                    id={movieData.id}
+                    title={movieData.snippet.title}
+                    date={movieData.addDate}
+                    views={movieData.statistics.viewCount}
+                    likes={movieData.statistics.likeCount}
+                    thumbnails={movieData.snippet.thumbnails}
+                    liked={movieData.isLiked}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Container>
       )}
     </>
   );

@@ -26,7 +26,7 @@ function AddForm() {
           value={input}
           onchangeHandler={handleInput}
         />
-        <ButtonModel type="submit" value="Get movie!" />
+        <ButtonModel type="submit" value="Get movie!" id="getMovie" />
       </FormGroup>
     </Form>
   );

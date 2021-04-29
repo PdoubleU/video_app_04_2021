@@ -25,7 +25,7 @@ function FirstVisit() {
           placeholder="Enter your name..."
           onchangeHandler={handleInputChange}
         />
-        <ButtonModel type="submit" value="Enter" />
+        <ButtonModel type="submit" value="Enter" id="submitName" />
       </FormGroup>
     </Form>
   );

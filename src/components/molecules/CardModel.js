@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CardText, CardBody, CardTitle } from 'reactstrap';
 import ButtonModel from '../atoms/Button';
@@ -21,12 +21,17 @@ function CardModel({ title, date, views, likes, liked }) {
       <CardText>Added: {date}</CardText>
       <CardText>Viev count: {views}</CardText>
       <CardText>Like count: {likes}</CardText>
-      <ButtonModel handleClick={handleModal} value="Watch" />
+      <ButtonModel handleClick={handleModal} value="Watch" id="playMovie" />
       <ButtonModel
         handleClick={context.toggleLike}
         value={liked ? 'Dislike' : 'Like'}
+        id="likeButton"
       />
-      <ButtonModel handleClick={context.deleteMovie} value="Remove from list" />
+      <ButtonModel
+        handleClick={context.deleteMovie}
+        value="Remove from list"
+        id="removeMovie"
+      />
     </CardBody>
   );
 }
