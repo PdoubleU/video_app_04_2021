@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFetchData from '../hooks/fetchData';
-import { inputFilter } from '../helpers';
+import { inputFilter, unifyData } from '../helpers';
 import { DEMO_YOUTUBE } from '../constans';
 
 export const MoviesContext = React.createContext({
@@ -17,10 +17,10 @@ export const MoviesProvider = ({ children }) => {
   const [storedMovies, setStoredMovies] = useState(
     JSON.parse(window.localStorage.getItem('movies') || null)
   );
-  const [{ data, isLoading, isError, fetchData }] = useFetchData();
+  const [{ data, apiProvider, isLoading, isError, fetchData }] = useFetchData();
 
   useEffect(() => {
-    addMovie(data);
+    addMovie(unifyData(data, apiProvider));
   }, [data]);
 
   useEffect(() => {
@@ -33,7 +33,6 @@ export const MoviesProvider = ({ children }) => {
 
   const addMovie = (data) => {
     if (!data) return;
-    console.log('movie added');
     storedMovies
       ? setStoredMovies([...storedMovies, data])
       : setStoredMovies([data]);
@@ -41,9 +40,9 @@ export const MoviesProvider = ({ children }) => {
 
   const getMovieData = (e, input) => {
     if (e) e.preventDefault();
-    const [url, id] = inputFilter(input);
+    const [url, options, id, provider] = inputFilter(input);
     // exit function in case of empty/bad id string:
-    if (!url && !id) return;
+    if (!url && !options && !id) return;
     // check if item with provided id exists in the memory and return if true (not duplicate items)
     if (
       storedMovies
@@ -54,8 +53,7 @@ export const MoviesProvider = ({ children }) => {
     )
       return;
 
-    console.log('lets fetch data');
-    fetchData(url, id);
+    fetchData(url, options, provider);
   };
 
   const getStoredMovies = () => {

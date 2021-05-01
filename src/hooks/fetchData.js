@@ -1,24 +1,18 @@
-import { useState, useEffect } from 'react';
-import { personalizeDataObject } from '../helpers';
+import { useState } from 'react';
 
 function useFetchData() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [key, setKey] = useState(null);
+  const [apiProvider, setApiProvider] = useState('');
 
-  useEffect(() => {
-    setKey(process.env.REACT_APP_YOUTUBE_API_KEY);
-  }, []);
-
-  const fetchData = (url, id) => {
+  const fetchData = (url, options, provider) => {
     setIsLoading(true);
-    fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${key}`
-    )
+    setApiProvider(provider);
+    fetch(url, { ...options })
       .then((response) => {
         response.json().then((data) => {
-          setData(personalizeDataObject(data.items[0]));
+          setData(data);
           setIsLoading(false);
         });
       })
@@ -29,7 +23,7 @@ function useFetchData() {
       });
   };
 
-  return [{ data, isLoading, isError, fetchData }];
+  return [{ data, apiProvider, isLoading, isError, fetchData }];
 }
 
 export default useFetchData;

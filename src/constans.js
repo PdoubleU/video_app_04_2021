@@ -25,7 +25,7 @@ export const REG_EXP = {
   youtube_input: new RegExp(
     `^https://www.youtube.com/watch\\?v=\\w{11}$|^https://youtu.be/\\w{11}$|^\\w{11}$`
   ),
-  vimeo_input: new RegExp(`^https://vimeo.com/\\d{9}$|^\\d{9}$`),
+  vimeo_input: new RegExp(`^https://vimeo.com/\\d{8,9}$|^\\d{8,9}$`),
   youtube_id: new RegExp(`\\w{11}$`),
-  vimeo_id: new RegExp(`\\d{9}$`),
+  vimeo_id: new RegExp(`\\d{8,9}$`),
 };
