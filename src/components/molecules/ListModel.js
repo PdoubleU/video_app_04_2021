@@ -16,7 +16,7 @@ function MovieListElement({
       <Media left href="#">
         <Media
           object
-          src={thumbnails.default.url}
+          src={thumbnails.high.url}
           alt="Generic placeholder image"
         />
       </Media>

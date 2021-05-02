@@ -8,7 +8,6 @@ let user = window.localStorage.getItem('user');
 
 function MainView() {
   const [userName] = useState(user);
-  console.log(typeof userName);
   return (
     <div>
       {!user ? <FirstVisit /> : <NextVisit name={userName} />}

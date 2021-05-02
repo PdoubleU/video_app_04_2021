@@ -1,4 +1,4 @@
-export const DEMO_YOUTUBE = [
+export const DEMO_LIST = [
   'ENrzD9HAZK4',
   'vn3tm0quoqE',
   'fsVL_xrYO0w',
@@ -19,13 +19,29 @@ export const DEMO_YOUTUBE = [
   'RYiAvn0buPQ',
   'awct4aukQTQ',
   'Z7IFp58NsVg',
+  '535769506',
+  '220555992',
+  '226441556',
+  '248465461',
+  '87452303',
+  '99144904',
+  '241916506',
+  '1522709',
+  '43974197',
+  '71715434',
+  '99227117',
+  '139592600',
+  '476216027',
+  '137623605',
+  '287060952',
+  '188653769',
 ];
 
 export const REG_EXP = {
   youtube_input: new RegExp(
     `^https://www.youtube.com/watch\\?v=\\w{11}$|^https://youtu.be/\\w{11}$|^\\w{11}$`
   ),
-  vimeo_input: new RegExp(`^https://vimeo.com/\\d{8,9}$|^\\d{8,9}$`),
+  vimeo_input: new RegExp(`^https://vimeo.com/\\d{7,9}$|^\\d{7,9}$`),
   youtube_id: new RegExp(`\\w{11}$`),
-  vimeo_id: new RegExp(`\\d{8,9}$`),
+  vimeo_id: new RegExp(`\\d{7,9}$`),
 };

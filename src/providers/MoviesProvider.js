@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFetchData from '../hooks/fetchData';
 import { inputFilter, unifyData } from '../helpers';
-import { DEMO_YOUTUBE } from '../constans';
+import { DEMO_LIST } from '../constans';
 
 export const MoviesContext = React.createContext({
   getStoredMovies: [],
@@ -38,7 +38,7 @@ export const MoviesProvider = ({ children }) => {
       : setStoredMovies([data]);
   };
 
-  const getMovieData = (e, input) => {
+  const getMovieData = async (e, input) => {
     if (e) e.preventDefault();
     const [url, options, id, provider] = inputFilter(input);
     // exit function in case of empty/bad id string:
@@ -52,8 +52,7 @@ export const MoviesProvider = ({ children }) => {
         : null
     )
       return;
-
-    fetchData(url, options, provider);
+    await fetchData(url, options, provider);
   };
 
   const getStoredMovies = () => {
@@ -88,11 +87,11 @@ export const MoviesProvider = ({ children }) => {
     setStoredMovies(null);
   };
 
-  const loadDemo = (e) => {
+  const loadDemo = async (e) => {
     e.preventDefault();
-    DEMO_YOUTUBE.forEach((elem) => {
-      getMovieData(null, elem);
-    });
+    for (const elem of DEMO_LIST) {
+      await getMovieData(null, elem);
+    }
   };
 
   return (

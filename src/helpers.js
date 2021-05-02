@@ -3,19 +3,26 @@ import { REG_EXP } from './constans';
 import { vimeoFetchReq, youtubeFetchReq } from './api/api';
 
 export const inputFilter = (input) => {
-  const youtubeProvider = REG_EXP.youtube_input.test(input);
-  const vimeoProvider = REG_EXP.vimeo_input.test(input);
+  let youtubeProvider = false,
+    vimeoProvider = false,
+    id = '',
+    provider = '',
+    [url, options] = ['', {}];
+
+  youtubeProvider = REG_EXP.youtube_input.test(input);
+  vimeoProvider = REG_EXP.vimeo_input.test(input);
   // check if the input is incorrect in both cases and then return with empty strings:
   if (!vimeoProvider && !youtubeProvider) return [null, null, null];
-
-  const youtubeId = youtubeProvider ? input.match(REG_EXP.youtube_id) : null;
-  const vimeoId = vimeoProvider ? input.match(REG_EXP.vimeo_id) : null;
-  const [url, options] = youtubeProvider
-    ? youtubeFetchReq(youtubeId)
-    : vimeoFetchReq(vimeoId);
-  const id = youtubeProvider ? youtubeId[0] : vimeoId[0];
-  const provider = youtubeProvider ? 'youtube' : 'vimeo';
-
+  if (youtubeProvider) {
+    id = input.match(REG_EXP.youtube_id);
+    provider = 'youtube';
+    [url, options] = youtubeFetchReq(id);
+  }
+  if (vimeoProvider) {
+    id = input.match(REG_EXP.vimeo_id);
+    provider = 'vimeo';
+    [url, options] = vimeoFetchReq(id);
+  }
   return [url, options, id, provider];
 };
 
@@ -38,7 +45,6 @@ export const personalizeDataObject = (item) => {
   let [month, day, year] = new Date().toLocaleDateString('en-US').split('/');
   item.addDate = day + ' ' + months[parseInt(month) + 1] + ' ' + year;
   item.isLiked = false;
-  console.log(item.addDate);
   return item;
 };
 
@@ -55,7 +61,6 @@ export const unifyData = (data, provider) => {
     obj.statistics.viewCount = data.metadata.connections.likes.total;
     obj.statistics.likeCount = data.metadata.connections.likes.total;
     obj.snippet.thumbnails.high.url = data.pictures.sizes[1].link;
-    console.log(data.pictures.sizes[1].link);
     return personalizeDataObject(obj);
   }
   obj.id = data.items[0].id;
