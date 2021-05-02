@@ -6,11 +6,13 @@ import { DEMO_LIST } from '../constans';
 
 export const MoviesContext = React.createContext({
   getStoredMovies: [],
+  getFilteredMovies: [],
   deleteMovie: () => {},
   getMovieData: () => {},
   toggleLike: () => {},
-  loadDemo: () => {},
   emptyList: () => {},
+  loadDemo: () => {},
+  sortByDate: () => {},
 });
 
 export const MoviesProvider = ({ children }) => {
@@ -56,12 +58,21 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const getStoredMovies = () => {
-    if (!storedMovies) return;
+    if (!storedMovies) return null;
     return storedMovies;
+  };
+
+  const getFilteredMovies = () => {
+    if (!storedMovies) return null;
+    let filteredData = storedMovies.filter((elem) => {
+      return elem.isLiked === true;
+    });
+    return filteredData;
   };
 
   const deleteMovie = (e) => {
     e.preventDefault();
+    console.log(e.target.offsetParent.id);
     let id = e.target.offsetParent.id;
     let tmpList = JSON.parse(JSON.stringify(storedMovies));
     let index = tmpList.findIndex((item) => {
@@ -82,27 +93,42 @@ export const MoviesProvider = ({ children }) => {
     setStoredMovies(tmpList);
   };
 
-  const emptyList = (e) => {
-    e.preventDefault();
+  const emptyList = () => {
     setStoredMovies(null);
   };
 
-  const loadDemo = async (e) => {
-    e.preventDefault();
+  const loadDemo = async () => {
     for (const elem of DEMO_LIST) {
       await getMovieData(null, elem);
     }
+  };
+
+  const sortByDate = (bool) => {
+    let tmpList = JSON.parse(JSON.stringify(storedMovies));
+    //boolean value passed as parameter determine descending or ascending sort: false = descending / true = ascending:
+    if (!bool) {
+      tmpList.sort((a, b) => {
+        return new Date(b.addDate) - new Date(a.addDate);
+      });
+      return setStoredMovies(tmpList);
+    }
+    tmpList.sort((a, b) => {
+      return new Date(a.addDate) - new Date(b.addDate);
+    });
+    return setStoredMovies(tmpList);
   };
 
   return (
     <MoviesContext.Provider
       value={{
         getStoredMovies,
+        getFilteredMovies,
         deleteMovie,
         getMovieData,
         toggleLike,
         emptyList,
         loadDemo,
+        sortByDate,
       }}
     >
       {isLoading && <div>Loading ...</div>}
