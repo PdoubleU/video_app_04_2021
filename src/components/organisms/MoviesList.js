@@ -4,6 +4,7 @@ import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
 import { Container, Row, Col } from 'reactstrap';
 import ListModel from '../molecules/ListModel';
+import ListPagination from '../molecules/Pagination';
 
 function MovieList() {
   // logic to handle with view tiles or list
@@ -11,12 +12,22 @@ function MovieList() {
   const [NORMAL, LIKED] = ['Show all', 'Show liked'];
   const context = useContext(MoviesContext);
   const data = context.getStoredMovies();
+  console.log(typeof data);
   const filteredData = context.getFilteredMovies();
 
   const [viewTiles, setViewTiles] = useState(true);
   const [btnValue, setBtnValue] = useState('Change display');
   const [btnFilterValue, setBtnFilterValue] = useState('Filter list');
   const [filteredList, setFilteredList] = useState(false);
+  const [currPage, setCurrPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
+  //get the exact number of items per page:
+  const totalItems = data.length;
+  const indexOfLastItem = currPage * itemsPerPage;
+  const indexOfFirsItem = indexOfLastItem - itemsPerPage;
+  const currItems = data.slice(indexOfFirsItem, indexOfLastItem);
+  console.log(typeof currItems);
 
   useEffect(() => {
     setBtnValue(viewTiles ? LIST : TILES);
@@ -28,6 +39,10 @@ function MovieList() {
 
   const handleView = () => {
     setViewTiles(!viewTiles);
+  };
+
+  const paginate = (pageNumber) => {
+    setCurrPage(pageNumber);
   };
 
   return (
@@ -64,7 +79,7 @@ function MovieList() {
             <h6>No movies, add some to your list</h6>
           ) : (
             <>
-              {data.map((movieData) => (
+              {currItems.map((movieData) => (
                 <ListModel
                   key={movieData.id}
                   id={movieData.id}
@@ -105,7 +120,7 @@ function MovieList() {
                 </>
               ) : (
                 <>
-                  {data.map((movieData) => (
+                  {currItems.map((movieData) => (
                     <Col key={movieData.id}>
                       <CardModel
                         id={movieData.id}
@@ -125,6 +140,11 @@ function MovieList() {
           )}
         </Container>
       )}
+      <ListPagination
+        handleClick={paginate}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
+      />
     </>
   );
 }

@@ -9,8 +9,13 @@ function useFetchData() {
   const fetchData = async (url, options, provider) => {
     setIsLoading(true);
     setApiProvider(provider);
-    let response = await fetch(url, { ...options });
-    let result = await response.json();
+    let response, result;
+    try {
+      response = await fetch(url, { ...options });
+      result = await response.json();
+    } catch (err) {
+      console.log(err);
+    }
     setData(result);
     setIsLoading(false);
   };
