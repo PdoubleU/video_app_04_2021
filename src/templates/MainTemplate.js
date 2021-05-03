@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navi from './Navigation.js';
-import Mainfooter from './Mainfooter.js';
+import Navi from '../components/organisms/Navigation.js';
+import Mainfooter from '../components/organisms/Mainfooter.js';
 
 function MainTemplate({ children }) {
   return (

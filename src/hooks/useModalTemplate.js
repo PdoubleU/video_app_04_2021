@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ModalTemplate from '../components/organisms/ModalTemplate';
+import ModalTemplate from '../templates/ModalTemplate';
 
 const useModalTemplate = (initialState = false) => {
   const [isOpen, setIsOpen] = useState(initialState);

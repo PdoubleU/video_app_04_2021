@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import MovieTile from './MovieTile';
+import CardModel from '../molecules/CardModel';
 import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
 import { Container, Row, Col } from 'reactstrap';
@@ -74,6 +74,7 @@ function MovieList() {
                   likes={movieData.statistics.likeCount}
                   thumbnails={movieData.snippet.thumbnails}
                   liked={movieData.isLiked}
+                  iframeUrl={movieData.iframe}
                 />
               ))}
             </>
@@ -89,7 +90,7 @@ function MovieList() {
                 <>
                   {filteredData.map((movieData) => (
                     <Col key={movieData.id}>
-                      <MovieTile
+                      <CardModel
                         id={movieData.id}
                         title={movieData.snippet.title}
                         date={movieData.addDate}
@@ -97,6 +98,7 @@ function MovieList() {
                         likes={movieData.statistics.likeCount}
                         thumbnails={movieData.snippet.thumbnails}
                         liked={movieData.isLiked}
+                        iframeUrl={movieData.iframe}
                       />
                     </Col>
                   ))}
@@ -105,7 +107,7 @@ function MovieList() {
                 <>
                   {data.map((movieData) => (
                     <Col key={movieData.id}>
-                      <MovieTile
+                      <CardModel
                         id={movieData.id}
                         title={movieData.snippet.title}
                         date={movieData.addDate}
@@ -113,6 +115,7 @@ function MovieList() {
                         likes={movieData.statistics.likeCount}
                         thumbnails={movieData.snippet.thumbnails}
                         liked={movieData.isLiked}
+                        iframeUrl={movieData.iframe}
                       />
                     </Col>
                   ))}

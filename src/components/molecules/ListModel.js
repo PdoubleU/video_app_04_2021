@@ -2,15 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Media } from 'reactstrap';
 
-function MovieListElement({
-  id,
-  title,
-  date,
-  views,
-  likes,
-  thumbnails,
-  liked,
-}) {
+function MovieListElement({ ...props }) {
+  const { id, title, date, views, likes, thumbnails, liked } = props;
   return (
     <Media>
       <Media left href="#">

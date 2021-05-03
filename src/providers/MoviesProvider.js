@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import useFetchData from '../hooks/fetchData';
-import { inputFilter, unifyData } from '../helpers';
+import useFetchData from '../hooks/useFetchData';
+import { inputFilter } from '../helpers/inputFilter';
+import { unifyData } from '../helpers/unifyData';
 import { DEMO_LIST } from '../constans';
 
 export const MoviesContext = React.createContext({

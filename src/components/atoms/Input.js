@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-function FormInput({
-  name = '',
-  id = '',
-  type = 'text',
-  placeholder,
-  onchangeHandler,
-}) {
+function FormInput({ ...props }) {
+  const {
+    name = '',
+    id = '',
+    type = 'text',
+    placeholder,
+    onchangeHandler,
+  } = props;
+
   return (
     <Input
       name={name}

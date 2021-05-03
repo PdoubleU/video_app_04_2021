@@ -1,8 +1,8 @@
 import React from 'react';
 import AddMovieForm from '../components/molecules/AddMovieForm';
 
-function AddMovie() {
+function MainView() {
   return <AddMovieForm />;
 }
 
-export default AddMovie;
+export default MainView;

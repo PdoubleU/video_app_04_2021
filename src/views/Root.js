@@ -1,8 +1,7 @@
 import React from 'react';
-import MainTemplate from '../components/organisms/MainTemplate';
+import MainTemplate from '../templates/MainTemplate';
 import ListOfMovies from './ListView';
-import AddMovie from './AddMovieView';
-import Welcome from './GreetingView';
+import MainView from './MainView';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -15,13 +14,10 @@ const App = () => {
         <MainTemplate>
           <Switch>
             <Route path="/" exact>
-              <Welcome />
+              <MainView />
             </Route>
             <Route path="/movie-list" exact>
               <ListOfMovies />
-            </Route>
-            <Route path="/add-movie" exact>
-              <AddMovie />
             </Route>
           </Switch>
         </MainTemplate>
