@@ -6,11 +6,11 @@ import { Container } from 'reactstrap';
 
 function MainTemplate({ children }) {
   return (
-    <div className="h-100">
+    <>
       <Navi />
       {children}
       <Mainfooter />
-    </div>
+    </>
   );
 }
 

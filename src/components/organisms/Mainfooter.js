@@ -1,14 +1,12 @@
-import { Col, CardFooter } from 'reactstrap';
-
 function Mainfooter() {
   return (
-    <CardFooter className="position-absolute bottom-0 w-100">
-      <Col className="container d-flex">
-        <span className="text-muted address m-auto">
-          Place sticky footer content here.
-        </span>
-      </Col>
-    </CardFooter>
+    <footer className="footer position-absolute w-100 bg-light ">
+      <div className="container px-5 py-3">
+        <p className="text-muted text-center m-0">
+          App author: Piotr Witasik/PdoubleU &copy; 2021
+        </p>
+      </div>
+    </footer>
   );
 }
 

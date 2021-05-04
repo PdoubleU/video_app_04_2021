@@ -18,31 +18,38 @@ function Navi() {
   };
 
   return (
-    <Navbar className="fixed-top bg-dark" light expand="md">
-      <NavbarBrand className="text-light" tag={Link} to="/">
-        Video App
-      </NavbarBrand>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink className="text-light" tag={Link} to="/" onClick={toggle}>
-              Main
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className="text-light"
-              tag={Link}
-              to="/movie-list"
-              onClick={toggle}
-            >
-              List
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
-    </Navbar>
+    <header className="d-block">
+      <Navbar className="fixed-top bg-dark " light expand="md">
+        <NavbarBrand className="text-light" tag={Link} to="/">
+          Video App
+        </NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink
+                className="text-light"
+                tag={Link}
+                to="/"
+                onClick={toggle}
+              >
+                Main
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className="text-light"
+                tag={Link}
+                to="/movie-list"
+                onClick={toggle}
+              >
+                List
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </header>
   );
 }
 

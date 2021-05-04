@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Container, Form, FormGroup, Spinner } from 'reactstrap';
+import { Form, FormGroup, Spinner } from 'reactstrap';
 import ButtonModel from '../atoms/Button';
 import InputModel from '../atoms/Input';
 import LabelModel from '../atoms/Label';
@@ -15,7 +15,7 @@ function AddForm() {
   };
 
   return (
-    <div className="h-100 mt-n5 d-flex">
+    <main className="container d-flex vh-100" role="main">
       {context.isError ? (
         <div className="m-auto">
           <h2>Something went wrong, try again later</h2>
@@ -28,7 +28,11 @@ function AddForm() {
           ) : (
             <Form inline onSubmit={(e) => context.getMovieData(e, input)}>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <LabelModel id="url" labelName="URL/ID" />
+                <LabelModel
+                  id="url"
+                  labelName="URL/ID"
+                  labelValue={"URL or video's id"}
+                />
                 <InputModel
                   name="movieURL"
                   id="url"
@@ -43,7 +47,7 @@ function AddForm() {
           )}
         </div>
       )}
-    </div>
+    </main>
   );
 }
 

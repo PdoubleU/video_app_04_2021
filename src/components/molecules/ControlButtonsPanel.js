@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
 import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
+import { Container } from 'reactstrap';
 
 const ControlButtonsPanel = (props) => {
   const { handleView, handleFiltering, btnValue, btnFilterValue } = props;
   const context = useContext(MoviesContext);
 
   return (
-    <>
+    <Container
+      className="btn-group btn-group-sm d-flex"
+      role="group"
+      aria-label="..."
+    >
       <ButtonModel
         handleClick={() => handleView()}
         value={btnValue}
@@ -38,7 +43,7 @@ const ControlButtonsPanel = (props) => {
         value={btnFilterValue}
         id="clearList"
       />
-    </>
+    </Container>
   );
 };
 

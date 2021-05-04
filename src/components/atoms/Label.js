@@ -4,7 +4,11 @@ import { Label } from 'reactstrap';
 
 function FormLabel({ ...props }) {
   const { id = '', labelValue = '' } = props;
-  return <Label htmlFor={id}>{labelValue}</Label>;
+  return (
+    <Label htmlFor={id} hidden>
+      {labelValue}
+    </Label>
+  );
 }
 
 FormLabel.propTypes = {
