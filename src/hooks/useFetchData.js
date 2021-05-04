@@ -6,6 +6,10 @@ function useFetchData() {
   const [isError, setIsError] = useState(false);
   const [apiProvider, setApiProvider] = useState('');
 
+  const resetErrorAlert = () => {
+    setIsError(false);
+  };
+
   const fetchData = async (url, options, provider) => {
     setIsLoading(true);
     setApiProvider(provider);
@@ -14,13 +18,16 @@ function useFetchData() {
       response = await fetch(url, { ...options });
       result = await response.json();
     } catch (err) {
+      setIsError(true);
       console.log(err);
     }
     setData(result);
     setIsLoading(false);
   };
 
-  return [{ data, apiProvider, isLoading, isError, fetchData }];
+  return [
+    { data, apiProvider, isLoading, isError, resetErrorAlert, fetchData },
+  ];
 }
 
 export default useFetchData;

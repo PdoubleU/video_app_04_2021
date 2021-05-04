@@ -14,13 +14,18 @@ export const MoviesContext = React.createContext({
   emptyList: () => {},
   loadDemo: () => {},
   sortByDate: () => {},
+  isLoading: false,
+  isError: false,
+  resetErrorAlert: () => {},
 });
 
 export const MoviesProvider = ({ children }) => {
   const [storedMovies, setStoredMovies] = useState(
     JSON.parse(window.localStorage.getItem('movies') || null)
   );
-  const [{ data, apiProvider, isLoading, isError, fetchData }] = useFetchData();
+  const [
+    { data, apiProvider, isLoading, isError, resetErrorAlert, fetchData },
+  ] = useFetchData();
 
   useEffect(() => {
     addMovie(unifyData(data, apiProvider));
@@ -73,7 +78,6 @@ export const MoviesProvider = ({ children }) => {
 
   const deleteMovie = (e) => {
     e.preventDefault();
-    console.log(e.target.offsetParent.id);
     let id = e.target.offsetParent.id;
     let tmpList = JSON.parse(JSON.stringify(storedMovies));
     let index = tmpList.findIndex((item) => {
@@ -130,9 +134,11 @@ export const MoviesProvider = ({ children }) => {
         emptyList,
         loadDemo,
         sortByDate,
+        isLoading,
+        isError,
+        resetErrorAlert,
       }}
     >
-      {isLoading && <div>Loading ...</div>}
       {children}
     </MoviesContext.Provider>
   );

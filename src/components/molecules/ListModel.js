@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Media } from 'reactstrap';
+import { Media } from 'reactstrap';
 
 function MovieListElement(props) {
   const { id, title, date, views, likes, thumbnails, liked } = props;

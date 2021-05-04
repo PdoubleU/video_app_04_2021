@@ -39,9 +39,9 @@ export const DEMO_LIST = [
 
 export const REG_EXP = {
   youtube_input: new RegExp(
-    `^https://www.youtube.com/watch\\?v=\\w{11}$|^https://youtu.be/\\w{11}$|^\\w{11}$`
+    `^https://www.youtube.com/watch\\?v=\\S{11}$|^https://youtu.be/\\S{11}$|^\\S{11}$`
   ),
   vimeo_input: new RegExp(`^https://vimeo.com/\\d{7,9}$|^\\d{7,9}$`),
-  youtube_id: new RegExp(`\\w{11}$`),
+  youtube_id: new RegExp(`\\S{11}$`),
   vimeo_id: new RegExp(`\\d{7,9}$`),
 };

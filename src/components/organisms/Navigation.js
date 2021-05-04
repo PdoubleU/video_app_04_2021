@@ -18,20 +18,25 @@ function Navi() {
   };
 
   return (
-    <Navbar color="inverse" light expand="md">
-      <NavbarBrand tag={Link} to="/">
+    <Navbar className="fixed-top bg-dark" light expand="md">
+      <NavbarBrand className="text-light" tag={Link} to="/">
         Video App
       </NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink tag={Link} to="/" onClick={toggle}>
+            <NavLink className="text-light" tag={Link} to="/" onClick={toggle}>
               Main
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to="/movie-list" onClick={toggle}>
+            <NavLink
+              className="text-light"
+              tag={Link}
+              to="/movie-list"
+              onClick={toggle}
+            >
               List
             </NavLink>
           </NavItem>
