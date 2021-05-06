@@ -78,7 +78,7 @@ export const MoviesProvider = ({ children }) => {
 
   const deleteMovie = (e) => {
     e.preventDefault();
-    let id = e.target.offsetParent.id;
+    let id = e.target.parentElement.offsetParent.offsetParent.id;
     let tmpList = JSON.parse(JSON.stringify(storedMovies));
     let index = tmpList.findIndex((item) => {
       return item.id === id;
@@ -89,7 +89,7 @@ export const MoviesProvider = ({ children }) => {
 
   const toggleLike = (e) => {
     e.preventDefault();
-    let id = e.target.offsetParent.id;
+    let id = e.target.parentElement.offsetParent.offsetParent.id;
     let tmpList = JSON.parse(JSON.stringify(storedMovies));
     let index = tmpList.findIndex((item) => {
       return item.id === id;

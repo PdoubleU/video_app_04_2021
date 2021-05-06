@@ -10,13 +10,8 @@ const ListPagination = ({ ...props }) => {
   }
   return (
     <Pagination className="m-auto" aria-label="Page navigation">
-      <PaginationItem>
-        <PaginationLink
-          onClick={() => handleClick(1)}
-          first
-          href="#"
-          id="first"
-        />
+      <PaginationItem id="first">
+        <PaginationLink onClick={() => handleClick(1)} first href="#" />
       </PaginationItem>
       {pageNumbers.map((num) => (
         <PaginationItem id={num}>
@@ -25,12 +20,11 @@ const ListPagination = ({ ...props }) => {
           </PaginationLink>
         </PaginationItem>
       ))}
-      <PaginationItem>
+      <PaginationItem id="last">
         <PaginationLink
           onClick={() => handleClick(pageNumbers.length)}
           last
           href="#"
-          id="last"
         />
       </PaginationItem>
     </Pagination>

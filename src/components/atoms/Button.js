@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ButtonModel({ ...props }) {
   const {
@@ -9,8 +10,9 @@ function ButtonModel({ ...props }) {
     route,
     id = '',
     type = 'button',
-    value = 'Hit enter!',
+    value = '',
     target = '',
+    faIcon = false,
   } = props;
   return (
     <Button
@@ -20,8 +22,10 @@ function ButtonModel({ ...props }) {
       id={id}
       type={type}
       target={target}
+      icon={faIcon}
     >
       {value}
+      {faIcon ? <FontAwesomeIcon icon={faIcon} size="sm" inverse /> : null}
     </Button>
   );
 }

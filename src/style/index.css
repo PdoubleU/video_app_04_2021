@@ -10,3 +10,14 @@ body {
 footer {
 	bottom: 0;
 }
+button > svg {
+    pointer-events: none;
+}
+.cardButtons {
+	bottom: 1rem;
+	right: 1rem;
+	width: fit-content;
+}
+.cardButtons > button + button {
+	margin: 0 0 0 .5rem;
+}

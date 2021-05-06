@@ -1,19 +1,24 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
-import ButtonModel from '../atoms/Button';
+import CardButtonsPanel from '../molecules/CardButtonsPanel';
 import Image from '../atoms/Image';
 import { MoviesContext } from '../../providers/MoviesProvider';
 import useModalTemplate from '../../hooks/useModalTemplate';
+import '../../style/fontawesome';
+
 function CardModel({ ...props }) {
   const { thumbnails, id, title, date, views, likes, liked, iframeUrl } = props;
   const [{ ModalTemplate, isOpen, handleModal }] = useModalTemplate();
-  const context = useContext(MoviesContext);
+  const [likeIcon, unlikeIcon] = [
+    ['far', 'heart'],
+    ['fas', 'heart'],
+  ];
 
   return (
-    <Card id={id}>
+    <Card id={id} className="h-100">
       <Image url={thumbnails.high.url} handleClick={handleModal} />
-      <CardBody>
+      <CardBody className="h-100 position-relative">
         {isOpen ? (
           <ModalTemplate
             isOpen={isOpen}
@@ -26,16 +31,9 @@ function CardModel({ ...props }) {
         <CardText>Added: {date}</CardText>
         <CardText>Viev count: {views}</CardText>
         <CardText>Like count: {likes}</CardText>
-        <ButtonModel handleClick={handleModal} value="Watch" id="playMovie" />
-        <ButtonModel
-          handleClick={context.toggleLike}
-          value={liked ? 'Dislike' : 'Like'}
-          id="likeButton"
-        />
-        <ButtonModel
-          handleClick={context.deleteMovie}
-          value="Remove from list"
-          id="removeMovie"
+        <CardButtonsPanel
+          handleModal={handleModal}
+          likeIconMode={liked ? unlikeIcon : likeIcon}
         />
       </CardBody>
     </Card>
