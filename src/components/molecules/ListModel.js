@@ -1,21 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Media } from 'reactstrap';
+import { Container, Media } from 'reactstrap';
+import useModalTemplate from '../../hooks/useModalTemplate';
+import CardButtonsPanel from '../molecules/CardButtonsPanel';
 
 function MovieListElement(props) {
-  const { id, title, date, views, likes, thumbnails, liked } = props;
+  const { id, title, date, views, likes, thumbnails, liked, iframeUrl } = props;
+  const [{ ModalTemplate, isOpen, handleModal }] = useModalTemplate();
+  const [likeIcon, unlikeIcon] = [
+    ['far', 'heart'],
+    ['fas', 'heart'],
+  ];
   return (
-    <Media id={id}>
-      <Media left href="#">
+    <Media id={id} className="position-relative w-100 mt-3" tag="li">
+      {isOpen ? (
+        <ModalTemplate
+          isOpen={isOpen}
+          toggleVisibility={handleModal}
+          title={title}
+          iframeUrl={iframeUrl}
+        />
+      ) : null}
+      <Media left href="#" className="w-25">
         <Media
           object
-          src={thumbnails.high.url}
+          src={thumbnails.standard.url}
           alt="Generic placeholder image"
+          className="w-75"
+          onClick={handleModal}
         />
       </Media>
       <Media body>
-        <Media heading>{title}</Media>
+        <Media heading className="w-75">
+          {title}
+        </Media>
         Date added: {date} / Views: {views} / Likes: {likes}
+        <CardButtonsPanel
+          handleModal={handleModal}
+          likeIconMode={liked ? unlikeIcon : likeIcon}
+        />
       </Media>
     </Media>
   );

@@ -3,21 +3,19 @@ import PropTypes from 'prop-types';
 import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
 import Image from '../atoms/Image';
-import { MoviesContext } from '../../providers/MoviesProvider';
 import useModalTemplate from '../../hooks/useModalTemplate';
 import '../../style/fontawesome';
 
-function CardModel({ ...props }) {
+function CardModel(props) {
   const { thumbnails, id, title, date, views, likes, liked, iframeUrl } = props;
   const [{ ModalTemplate, isOpen, handleModal }] = useModalTemplate();
   const [likeIcon, unlikeIcon] = [
     ['far', 'heart'],
     ['fas', 'heart'],
   ];
-
   return (
     <Card id={id} className="h-100">
-      <Image url={thumbnails.high.url} handleClick={handleModal} />
+      <Image url={thumbnails.standard.url} handleClick={handleModal} />
       <CardBody className="h-100 position-relative">
         {isOpen ? (
           <ModalTemplate

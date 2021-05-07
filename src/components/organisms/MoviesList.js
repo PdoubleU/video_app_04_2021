@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import CardModel from '../molecules/CardModel';
 import ControlButtonsPanel from '../molecules/ControlButtonsPanel';
 import { MoviesContext } from '../../providers/MoviesProvider';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, List } from 'reactstrap';
 import ListModel from '../molecules/ListModel';
 import ListPagination from '../molecules/Pagination';
 import ButtonModel from '../atoms/Button';
@@ -16,7 +16,7 @@ function MovieList() {
   const [btnFilterValue, setBtnFilterValue] = useState('Filter list');
   const [filteredList, setFilteredList] = useState(false);
   const [currPage, setCurrPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   const context = useContext(MoviesContext);
   const [data, setData] = useState(context.getStoredMovies());
@@ -88,7 +88,7 @@ function MovieList() {
       />
       {!viewTiles ? (
         <Container>
-          <>
+          <List type="unstyled">
             {currItems.map((movieData) => (
               <ListModel
                 key={movieData.id}
@@ -102,7 +102,7 @@ function MovieList() {
                 iframeUrl={movieData.iframe}
               />
             ))}
-          </>
+          </List>
         </Container>
       ) : (
         <Container fluid="true" className="px-4">
