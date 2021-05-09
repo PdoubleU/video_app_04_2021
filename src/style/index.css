@@ -13,6 +13,7 @@ footer {
 button > svg {
     pointer-events: none;
 }
+
 .cardButtons {
 	bottom: 1rem;
 	right: 1rem;
@@ -20,4 +21,51 @@ button > svg {
 }
 .cardButtons > button + button {
 	margin: 0 0 0 .5rem;
+}
+.card-img-top {
+	height: 12rem;
+	object-fit: cover;
+}
+
+/*custom style for media elements (either card or list model), response to diffirent image sizes downloaded as thumbnails*/
+li.media {
+	border: 1px solid transparent;
+	border-radius: 5px;
+}
+li.media:hover,
+div.card:hover {
+	border-color:grey;
+	box-shadow: grey 1px 1px 1px;
+	transition: all .3s ease;
+}
+img.media-object{
+	float: left;
+    width:  8rem;
+    height: 8rem;
+    object-fit: cover;
+	border-radius: 5px;
+	transition: all .3s ease;
+}
+/*style for hovering the image on the list or tiles*/
+.card-img-top {
+	opacity: 1;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+.image-onhover{
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+  }
+.image-container:hover img{
+	opacity: 0.3;
+}
+.image-container:hover .image-onhover {
+	opacity: 1;
 }

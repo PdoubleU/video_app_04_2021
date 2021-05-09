@@ -16,6 +16,7 @@ function ButtonModel({ ...props }) {
   } = props;
   return (
     <Button
+      outline
       onClick={handleClick}
       tag={tagName}
       to={route}
@@ -25,7 +26,7 @@ function ButtonModel({ ...props }) {
       icon={faIcon}
     >
       {value}
-      {faIcon ? <FontAwesomeIcon icon={faIcon} size="sm" inverse /> : null}
+      {faIcon ? <FontAwesomeIcon icon={faIcon} size="sm" /> : null}
     </Button>
   );
 }

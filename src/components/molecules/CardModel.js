@@ -15,7 +15,14 @@ function CardModel(props) {
   ];
   return (
     <Card id={id} className="h-100">
-      <Image url={thumbnails.standard.url} handleClick={handleModal} />
+      <div className="image-container position-relative">
+        {' '}
+        <Image url={thumbnails.standard.url} handleClick={handleModal} />
+        <div class="image-onhover">
+          <p>Play</p>
+        </div>
+      </div>
+
       <CardBody className="h-100 position-relative">
         {isOpen ? (
           <ModalTemplate

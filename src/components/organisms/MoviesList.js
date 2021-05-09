@@ -109,7 +109,7 @@ function MovieList() {
           <Row xs="1" md="2" lg="4" xl="10">
             <>
               {currItems.map((movieData) => (
-                <Col className="my-2" key={movieData.id}>
+                <Col className="my-2 align-items-stretch" key={movieData.id}>
                   <CardModel
                     id={movieData.id}
                     title={movieData.snippet.title}

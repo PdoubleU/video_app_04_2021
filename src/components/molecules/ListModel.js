@@ -21,16 +21,21 @@ function MovieListElement(props) {
           iframeUrl={iframeUrl}
         />
       ) : null}
-      <Media left href="#" className="w-25">
-        <Media
-          object
-          src={thumbnails.standard.url}
-          alt="Generic placeholder image"
-          className="w-75"
-          onClick={handleModal}
-        />
+      <Media left href="#" className="w-auto mr-5 d-flex">
+        <div className="image-container position-relative ml-0">
+          {' '}
+          <Media
+            object
+            src={thumbnails.standard.url}
+            alt="Generic placeholder image"
+            onClick={handleModal}
+          />
+          <div class="image-onhover">
+            <p>Play</p>
+          </div>
+        </div>
       </Media>
-      <Media body>
+      <Media body className="mt-3">
         <Media heading className="w-75">
           {title}
         </Media>
