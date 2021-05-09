@@ -37,6 +37,7 @@ function CardModel(props) {
         <CardText>Viev count: {views}</CardText>
         <CardText>Like count: {likes}</CardText>
         <CardButtonsPanel
+          id={id}
           handleModal={handleModal}
           likeIconMode={liked ? unlikeIcon : likeIcon}
         />

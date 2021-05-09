@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Media } from 'reactstrap';
+import { Media } from 'reactstrap';
 import useModalTemplate from '../../hooks/useModalTemplate';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
 
@@ -41,6 +41,7 @@ function MovieListElement(props) {
         </Media>
         Date added: {date} / Views: {views} / Likes: {likes}
         <CardButtonsPanel
+          id={id}
           handleModal={handleModal}
           likeIconMode={liked ? unlikeIcon : likeIcon}
         />

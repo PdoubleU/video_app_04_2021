@@ -4,11 +4,12 @@ import { MoviesContext } from '../../providers/MoviesProvider';
 import { Container } from 'reactstrap';
 
 const CardButtonsPanel = (props) => {
-  const { handleModal, likeIconMode } = props;
+  const { id, handleModal, likeIconMode } = props;
   const context = useContext(MoviesContext);
+  console.log(id);
 
   return (
-    <Container className="position-absolute cardButtons">
+    <Container className="position-absolute cardButtons" id={id}>
       <ButtonModel handleClick={handleModal} id="playMovie" faIcon="play" />
       <ButtonModel
         handleClick={context.toggleLike}
