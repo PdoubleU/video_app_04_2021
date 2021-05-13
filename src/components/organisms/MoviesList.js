@@ -21,24 +21,22 @@ function MovieList() {
   const [btnFilterValue, setBtnFilterValue] = useState('Filter list');
   const [filteredList, setFilteredList] = useState(false);
   const [currPage, setCurrPage] = useState(1);
-  const itemsPerPage = useState(8);
+  const [itemsPerPage] = useState(8);
 
   const context = useContext(MoviesContext);
   const [data, setData] = useState(context.getStoredMovies());
 
   //get the exact number of items per page:
   const totalItems = data && data.length;
-  console.log(totalItems);
   const indexOfLastItem = currPage * itemsPerPage;
-  console.log(indexOfLastItem);
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  console.log(indexOfFirstItem);
   const currItems = data && data.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currItems);
 
   useEffect(() => {
     if (filteredList) {
-      return setData(context.getFilteredMovies());
+      setCurrPage(1);
+      setData(context.getFilteredMovies());
+      return;
     }
     setData(context.getStoredMovies());
   }, [filteredList, context]);

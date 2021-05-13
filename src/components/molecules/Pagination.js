@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const ListPagination = ({ ...props }) => {
-  console.log(props);
   const { handleClick, itemsPerPage, totalItems } = props;
   const pageNumbers = [];
 
@@ -34,9 +33,9 @@ const ListPagination = ({ ...props }) => {
 };
 
 ListPagination.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  itemsPerPage: PropTypes.number.isRequired,
-  totalItems: PropTypes.number.isRequired,
+  handleClick: PropTypes.func,
+  itemsPerPage: PropTypes.number,
+  totalItems: PropTypes.number,
 };
 
 export default ListPagination;
