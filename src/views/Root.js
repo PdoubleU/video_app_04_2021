@@ -9,7 +9,7 @@ import { MoviesProvider } from '../providers/MoviesProvider';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/video_app_04_2021">
       <MoviesProvider>
         <MainTemplate>
           <Switch>
