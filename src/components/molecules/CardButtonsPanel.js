@@ -6,7 +6,6 @@ import { Container } from 'reactstrap';
 const CardButtonsPanel = (props) => {
   const { id, handleModal, likeIconMode } = props;
   const context = useContext(MoviesContext);
-  console.log(id);
 
   return (
     <Container className="position-absolute cardButtons" id={id}>

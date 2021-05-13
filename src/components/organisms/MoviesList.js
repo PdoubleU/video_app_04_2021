@@ -7,25 +7,34 @@ import ListModel from '../molecules/ListModel';
 import ListPagination from '../molecules/Pagination';
 import ButtonModel from '../atoms/Button';
 
+const buttonsNames = {
+  tiles: 'Display tiles',
+  list: 'Display list',
+  normal: 'Show all',
+  liked: 'Show liked',
+};
+
 function MovieList() {
-  // logic to handle with view tiles or list
-  const [TILES, LIST] = ['Display tiles', 'Display list'];
-  const [NORMAL, LIKED] = ['Show all', 'Show liked'];
+  const { tiles, list, normal, liked } = buttonsNames;
   const [viewTiles, setViewTiles] = useState(true);
   const [btnValue, setBtnValue] = useState('Change display');
   const [btnFilterValue, setBtnFilterValue] = useState('Filter list');
   const [filteredList, setFilteredList] = useState(false);
   const [currPage, setCurrPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const itemsPerPage = useState(8);
 
   const context = useContext(MoviesContext);
   const [data, setData] = useState(context.getStoredMovies());
 
   //get the exact number of items per page:
   const totalItems = data && data.length;
+  console.log(totalItems);
   const indexOfLastItem = currPage * itemsPerPage;
+  console.log(indexOfLastItem);
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  console.log(indexOfFirstItem);
   const currItems = data && data.slice(indexOfFirstItem, indexOfLastItem);
+  console.log(currItems);
 
   useEffect(() => {
     if (filteredList) {
@@ -35,11 +44,11 @@ function MovieList() {
   }, [filteredList, context]);
 
   useEffect(() => {
-    setBtnValue(viewTiles ? LIST : TILES);
+    setBtnValue(viewTiles ? list : tiles);
   }, [viewTiles]);
 
   useEffect(() => {
-    setBtnFilterValue(filteredList ? NORMAL : LIKED);
+    setBtnFilterValue(filteredList ? normal : liked);
   }, [filteredList]);
 
   const handleView = () => {

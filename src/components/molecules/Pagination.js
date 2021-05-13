@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const ListPagination = ({ ...props }) => {
+  console.log(props);
   const { handleClick, itemsPerPage, totalItems } = props;
   const pageNumbers = [];
 
@@ -29,6 +31,12 @@ const ListPagination = ({ ...props }) => {
       </PaginationItem>
     </Pagination>
   );
+};
+
+ListPagination.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  itemsPerPage: PropTypes.number.isRequired,
+  totalItems: PropTypes.number.isRequired,
 };
 
 export default ListPagination;
