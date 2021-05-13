@@ -19,7 +19,11 @@ function AddForm() {
       {context.isError ? (
         <div className="m-auto">
           <h2>Something went wrong, try again later</h2>
-          <button onClick={() => context.resetErrorAlert()}>close</button>
+          <ButtonModel
+            handleClick={() => context.resetErrorAlert()}
+            id="closeAlert"
+            value="Try again"
+          />
         </div>
       ) : (
         <div className="m-auto">
