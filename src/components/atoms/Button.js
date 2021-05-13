@@ -12,7 +12,7 @@ function ButtonModel({ ...props }) {
     type = 'button',
     value = '',
     target = '',
-    faIcon = false,
+    faIcon = '',
   } = props;
   return (
     <Button

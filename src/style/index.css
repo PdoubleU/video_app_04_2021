@@ -13,6 +13,11 @@ footer {
 button > svg {
     pointer-events: none;
 }
+a.page-link,
+a.page-link:hover {
+	list-style: none;
+	color: inherit;
+}
 
 .cardButtons {
 	bottom: 1rem;
