@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 
-function FormInput({ ...props }) {
+function FormInput(props) {
   const {
     name = '',
     id = '',

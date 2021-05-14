@@ -30,7 +30,7 @@ function MovieListElement(props) {
             alt="Generic placeholder image"
             onClick={handleModal}
           />
-          <div class="image-onhover">
+          <div className="image-onhover">
             <p>Play</p>
           </div>
         </div>
@@ -54,8 +54,8 @@ MovieListElement.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  views: PropTypes.string.isRequired,
-  likes: PropTypes.string.isRequired,
+  views: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  likes: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   liked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 

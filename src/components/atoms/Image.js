@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardImg } from 'reactstrap';
 
-function Image({ ...props }) {
+function Image(props) {
   const { handleClick, url = '', alt = 'alternate text' } = props;
   return (
     <CardImg

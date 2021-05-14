@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import { REG_EXP } from '../constans';
 import { personalizeDataObject } from './personalizeDataObject';
 
+// method handle with discrepancy between data sets from multiple api's
+// in applcation we need only particular data, so it can be done by below code
+// method can be developed if new api provider will be added: this function coexists with inputFilter
+// which has to be updated accordingly:
 export const unifyData = (data, provider) => {
   if (!data) return;
   let obj = {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function ButtonModel({ ...props }) {
+function ButtonModel(props) {
   const {
     handleClick,
     tagName,
@@ -39,6 +39,7 @@ ButtonModel.propTypes = {
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   value: PropTypes.string,
   target: PropTypes.string,
+  faIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 };
 
 export default ButtonModel;

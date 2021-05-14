@@ -20,6 +20,8 @@ export const MoviesContext = React.createContext({
 });
 
 const saveInStorage = (data) => {
+  // handle with storing the movies' list in the local storage
+  // object is stringify into JSON, so can be used in local storage:
   window.localStorage.setItem('movies', JSON.stringify(data));
 };
 
@@ -37,11 +39,14 @@ export const MoviesProvider = ({ children }) => {
 
   useEffect(() => {
     saveInStorage(storedMovies);
-    // eslint-disable-line react-hooks/exhaustive-deps
   }, [storedMovies]);
 
   const addMovie = (data) => {
+    // if we do not fetch correct data (is empty or null or undefined), the function returns:
     if (!data) return;
+    // otherwise method checks if storedMovies is truthy (even if the storedMovies list has no items, but exists)
+    // when storedMovies exists, we use spread operator to make sure that all stored items will be in the updated data set,
+    // and add new object to the list:
     storedMovies
       ? setStoredMovies([...storedMovies, data])
       : setStoredMovies([data]);
@@ -50,9 +55,10 @@ export const MoviesProvider = ({ children }) => {
   const getMovieData = async (e, input) => {
     if (e) e.preventDefault();
     const [url, options, id, provider] = inputFilter(input);
-    // exit function in case of empty/bad id string:
+    // exit function in case of empty/bad id and url and options
+    // prevents fetching data without correct values:
     if (!url && !options && !id) return;
-    // check if item with provided id exists in the memory and return if true (not duplicate items)
+    // method needs to prevent duplicate items:
     if (
       storedMovies
         ? storedMovies.some((item) => {
@@ -70,6 +76,7 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const getFilteredMovies = () => {
+    // method helps to get only liked movies into the displayed list:
     if (!storedMovies) return null;
     let filteredData = storedMovies.filter((elem) => {
       return elem.isLiked === true;

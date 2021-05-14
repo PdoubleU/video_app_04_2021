@@ -3,6 +3,10 @@ import { REG_EXP } from '../constans';
 import { vimeoFetchReq } from '../api/vimeoFetchRequest';
 import { youtubeFetchReq } from '../api/youtubeFetchRequest';
 
+// method checks input (main feature is to add new movie via url/id on the main page)
+// decide which kind of request should be prepared and execute one of two helpers accordingly (vimeoFetchReq and youtubeFetchReq)
+// returns ready to use url, options, id and provider for further use in other parts of app
+// this method is closely connected with MoviesProvider's method getMovieData as well as two functions from api folder:
 export const inputFilter = (input) => {
   let youtubeProvider = false,
     vimeoProvider = false,

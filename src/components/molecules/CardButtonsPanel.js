@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import ButtonModel from '../atoms/Button';
 import { MoviesContext } from '../../providers/MoviesProvider';
 import { Container } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 const CardButtonsPanel = (props) => {
   const { id, handleModal, likeIconMode } = props;
@@ -22,6 +23,12 @@ const CardButtonsPanel = (props) => {
       ></ButtonModel>
     </Container>
   );
+};
+
+CardButtonsPanel.propTypes = {
+  id: PropTypes.string,
+  handleModal: PropTypes.func,
+  likeIconMode: PropTypes.array,
 };
 
 export default CardButtonsPanel;

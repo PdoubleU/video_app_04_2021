@@ -9,6 +9,7 @@ import { MoviesProvider } from '../providers/MoviesProvider';
 
 const App = () => {
   return (
+    // basename is used to handle BrowserRouter in gh-pages:
     <Router basename="/video_app_04_2021">
       <MoviesProvider>
         <MainTemplate>

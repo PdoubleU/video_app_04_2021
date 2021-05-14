@@ -38,6 +38,7 @@ ModalTemplate.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
   title: PropTypes.string,
+  iframeUrl: PropTypes.string,
 };
 
 export default ModalTemplate;

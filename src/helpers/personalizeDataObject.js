@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+// method adds extra keys to the object:
 export const personalizeDataObject = (item) => {
   if (!item) return;
   let months = [
@@ -17,6 +18,10 @@ export const personalizeDataObject = (item) => {
     'December',
   ];
   let [month, day, year] = new Date().toLocaleDateString('en-US').split('/');
+
+  /* block below is only for demonstration purposes and simulates the date of adding to library */
+  /* should be removed before hosting */
+  /* start demonstration block  */
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -24,6 +29,7 @@ export const personalizeDataObject = (item) => {
   }
   day = getRandomInt(1, 30);
   month = getRandomInt(0, 11);
+  /* end demonstration block  */
   item.addDate = day + ' ' + months[parseInt(month) + 1] + ' ' + year;
   item.isLiked = false;
   return item;

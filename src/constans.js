@@ -1,3 +1,4 @@
+// hardcoded ids to render as demo:
 export const DEMO_LIST = [
   'F-yeKCV2Mrk',
   'TUfyUUauuoY',
@@ -52,6 +53,7 @@ export const DEMO_LIST = [
   '211452489',
 ];
 
+// regular expressions used to handle with user's input in url/id field. This can be developed by adding extra api providers in the app: just add new regular expression to handle desired input:
 export const REG_EXP = {
   youtube_input: new RegExp(
     `^https://www.youtube.com/watch\\?v=\\S{11}$|^https://youtu.be/\\S{11}$|^\\S{11}$`
