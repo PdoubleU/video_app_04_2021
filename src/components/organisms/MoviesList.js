@@ -7,7 +7,8 @@ import ListModel from '../molecules/ListModel';
 import ListPagination from '../molecules/Pagination';
 import ButtonModel from '../atoms/Button';
 
-const buttonsNames = {
+// names for buttons used in component MovieList,, button's name changes each time we switch the type of view:
+const { tiles, list, normal, liked } = {
   tiles: 'Display tiles',
   list: 'Display list',
   normal: 'Show all',
@@ -15,10 +16,9 @@ const buttonsNames = {
 };
 
 function MovieList() {
-  const { tiles, list, normal, liked } = buttonsNames;
   const [viewTiles, setViewTiles] = useState(true);
-  const [btnValue, setBtnValue] = useState('Change display');
-  const [btnFilterValue, setBtnFilterValue] = useState('Filter list');
+  const [btnValue, setBtnValue] = useState(tiles);
+  const [btnFilterValue, setBtnFilterValue] = useState(normal);
   const [filteredList, setFilteredList] = useState(false);
   const [currPage, setCurrPage] = useState(1);
   const [itemsPerPage] = useState(8);

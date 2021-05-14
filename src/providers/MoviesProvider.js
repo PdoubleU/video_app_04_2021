@@ -19,6 +19,10 @@ export const MoviesContext = React.createContext({
   resetErrorAlert: () => {},
 });
 
+const saveInStorage = (data) => {
+  window.localStorage.setItem('movies', JSON.stringify(data));
+};
+
 export const MoviesProvider = ({ children }) => {
   const [storedMovies, setStoredMovies] = useState(
     JSON.parse(window.localStorage.getItem('movies') || null)
@@ -32,12 +36,9 @@ export const MoviesProvider = ({ children }) => {
   }, [data]);
 
   useEffect(() => {
-    saveInStorage();
+    saveInStorage(storedMovies);
+    // eslint-disable-line react-hooks/exhaustive-deps
   }, [storedMovies]);
-
-  const saveInStorage = () => {
-    window.localStorage.setItem('movies', JSON.stringify(storedMovies));
-  };
 
   const addMovie = (data) => {
     if (!data) return;

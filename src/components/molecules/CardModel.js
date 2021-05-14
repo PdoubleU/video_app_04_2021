@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
@@ -18,7 +18,7 @@ function CardModel(props) {
       <div className="image-container position-relative">
         {' '}
         <Image url={thumbnails.standard.url} handleClick={handleModal} />
-        <div class="image-onhover">
+        <div className="image-onhover">
           <p>Play</p>
         </div>
       </div>
