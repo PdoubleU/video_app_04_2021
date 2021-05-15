@@ -1,70 +1,56 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Video app / React
 
-## Available Scripts
+![GitHub Logo](/images/app_demo.bmp)
 
-In the project directory, you can run:
 
-### `npm start`
+[Lets go to live preview](https://pdoubleu.github.io/video_app_04_2021/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The Video App is an application designed in React. Its main feature is to store a list of movies collected via API, and these can be played in a modal window. For now, the application is storing data from Vimeo or Youtube, but all components and features were designed to change it in the future at will.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Keep in local storage
+All movies added by a user are stored in the local storage, so the user can be sure that a list will be permanently available unless the browser is reinstalled or local storage is emptied. That allows to add and remove movies at will.
 
-### `npm run build`
+### Watch instantly
+The app allows to watch the chosen movie in the application - the user is not redirected to the source website. Just press the play button or the thumbnail and the modal window with a player will open.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Display tiles or list
+The application allows a user to switch between list and tiles view, each one with pagination.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Sort items
+The movies are displayed with the date of download and can be sorted in descending or ascending order according to these values.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### The best movies are remembered
+The user is allowed to like or dislike particular movies, so he can easily peek at the favorite movies anytime he wants.
 
-### `npm run eject`
+### Remove movie or empty all
+This feature allows removing movies from the list. If the list is old-fashioned (e.g. the songs added to the list were popular last summer, and the user is not fond of these anymore), it can be easily emptied by pressing one button.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Used technologies and approaches
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I have used the following technologies:
 
-## Learn More
+    1. React
+    2. JavaScript ES6
+    3. HTML 5
+    4. CSS
+    5. REST API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Used tools:
 
-### Code Splitting
+The followed tools were used to finalize the project:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    1. Visual Studio Code
+    2. GIT - as a control version system
+    3. React Create App - for instant project development without struggling with setting up the developer environment
+    6. Youtube and Vimeo API's
+## Interesting facts about the project:
 
-### Analyzing the Bundle Size
+This project was a pain in the neck at some point when I realized that Vimeo and Youtube provide different data, and since I didn't use GraphQL I was forced to figure out something in JavaScript. That was a good lesson for me, and I am going to get accustomed to GraphQL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

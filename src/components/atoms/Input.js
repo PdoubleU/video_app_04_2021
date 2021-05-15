@@ -9,6 +9,7 @@ function FormInput(props) {
     type = 'text',
     placeholder,
     onchangeHandler,
+    ariaLabelledby = '',
   } = props;
 
   return (
@@ -18,6 +19,7 @@ function FormInput(props) {
       type={type}
       placeholder={placeholder}
       onChange={(e) => onchangeHandler(e)}
+      ariaLabelledby={ariaLabelledby}
     />
   );
 }
@@ -28,6 +30,7 @@ FormInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onchangeHandler: PropTypes.func,
+  ariaLabelledby: PropTypes.string.isRequired,
 };
 
 export default FormInput;
