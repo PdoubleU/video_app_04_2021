@@ -11,27 +11,25 @@ The Video App is an application designed in React. Its main feature is to store 
 
 ## Features
 
-### Keep in local storage
-All movies added by a user are stored in the local storage, so the user can be sure that a list will be permanently available unless the browser is reinstalled or local storage is emptied. That allows to add and remove movies at will.
+### Keep in a local storage
+> All movies added by a user are stored in the local storage, so the user can be sure that a list will be permanently available unless the browser is reinstalled or local storage is emptied. That allows to add and remove movies at will.
 
 ### Watch instantly
-The app allows to watch the chosen movie in the application - the user is not redirected to the source website. Just press the play button or the thumbnail and the modal window with a player will open.
+> The app allows to watch the chosen movie in the application - the user is not redirected to the source website. Just press the play button or the thumbnail and the modal window with a player will open.
 
 ### Display tiles or list
-The application allows a user to switch between list and tiles view, each one with pagination.
+> The application allows a user to switch between list and tiles view, each one with pagination.
 
 ### Sort items
-The movies are displayed with the date of download and can be sorted in descending or ascending order according to these values.
+> The movies are displayed with the date of download and can be sorted in descending or ascending order according to these values.
 
 ### The best movies are remembered
-The user is allowed to like or dislike particular movies, so he can easily peek at the favorite movies anytime he wants.
+> The user is allowed to like or dislike particular movies, so he can easily peek at the favorite movies anytime he wants.
 
 ### Remove movie or empty all
-This feature allows removing movies from the list. If the list is old-fashioned (e.g. the songs added to the list were popular last summer, and the user is not fond of these anymore), it can be easily emptied by pressing one button.
+> This feature allows removing movies from the list. If the list is old-fashioned (e.g. the songs added to the list were popular last summer, and the user is not fond of these anymore), it can be easily emptied by pressing one button.
 
 ## Used technologies and approaches
-
-
 
 I have used the following technologies:
 
@@ -52,5 +50,5 @@ The followed tools were used to finalize the project:
     6. Youtube and Vimeo API's
 ## Interesting facts about the project:
 
-This project was a pain in the neck at some point when I realized that Vimeo and Youtube provide different data, and since I didn't use GraphQL I was forced to figure out something in JavaScript. That was a good lesson for me, and I am going to get accustomed to GraphQL.
+> This project was a pain in the neck at some point when I realized that Vimeo and Youtube provide different data, and since I didn't use GraphQL I was forced to figure out something in JavaScript. That was a good lesson for me, and I am going to get accustomed to GraphQL.
 
