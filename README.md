@@ -31,6 +31,16 @@ The Video App is an application designed in React. Its main feature is to store 
 
 ## Used technologies and approaches
 
+> During developing I was sticking to below requirements and good practices:
+> - use react hooks
+> - custom hooks
+> - use functional components, unless class components fits better
+> - avoid prop drilling (use react context)
+> - checking prop types
+> - list items rendered with unique keys
+> - guard-pattern
+> - desing code to be easily scalable in the future
+
 I have used the following technologies:
 
     1. React
