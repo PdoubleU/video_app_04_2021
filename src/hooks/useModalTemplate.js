@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ModalTemplate from '../templates/ModalTemplate';
 import PropTypes from 'prop-types';
 
 const useModalTemplate = (initialState = false) => {
@@ -7,7 +6,7 @@ const useModalTemplate = (initialState = false) => {
 
   const handleModal = () => setIsOpen(!isOpen);
 
-  return [{ ModalTemplate, isOpen, handleModal }];
+  return [{ isOpen, handleModal }];
 };
 
 useModalTemplate.proptypes = {

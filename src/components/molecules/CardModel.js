@@ -4,11 +4,12 @@ import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
 import Image from '../atoms/Image';
 import useModalTemplate from '../../hooks/useModalTemplate';
+import ModalTemplate from '../../templates/ModalTemplate';
 import '../../style/fontawesome';
 
 function CardModel(props) {
   const { thumbnails, id, title, date, views, likes, liked, iframeUrl } = props;
-  const [{ ModalTemplate, isOpen, handleModal }] = useModalTemplate();
+  const [{ isOpen, handleModal }] = useModalTemplate();
   const [likeIcon, unlikeIcon] = [
     ['far', 'heart'],
     ['fas', 'heart'],

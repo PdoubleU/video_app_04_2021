@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { Media } from 'reactstrap';
 import useModalTemplate from '../../hooks/useModalTemplate';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
+import ModalTemplate from '../../templates/ModalTemplate';
 
 function MovieListElement(props) {
   const { id, title, date, views, likes, thumbnails, liked, iframeUrl } = props;
-  const [{ ModalTemplate, isOpen, handleModal }] = useModalTemplate();
+  const [{ isOpen, handleModal }] = useModalTemplate();
   const [likeIcon, unlikeIcon] = [
     ['far', 'heart'],
     ['fas', 'heart'],
