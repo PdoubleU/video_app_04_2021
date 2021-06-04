@@ -57,7 +57,7 @@ The followed tools were used to finalize the project:
     1. Visual Studio Code
     2. GIT - as a control version system
     3. React Create App - for instant project development without struggling with setting up the developer environment
-    6. Youtube and Vimeo API's
+    4. Youtube and Vimeo API's
 ## Interesting facts about the project:
 
 > This project was a pain in the neck at some point when I realized that Vimeo and Youtube provide different data, and since I didn't use GraphQL I was forced to figure out something in JavaScript. That was a good lesson for me, and I am going to get accustomed to GraphQL.
