@@ -18,10 +18,12 @@ a.page-link:hover {
 	list-style: none;
 	color: inherit;
 }
-
+.card-body {
+	padding: 1.25rem 1.25rem 3rem;
+}
 .cardButtons {
 	bottom: 1rem;
-	right: 1rem;
+	right: 0;
 	width: fit-content;
 }
 .cardButtons > button + button {

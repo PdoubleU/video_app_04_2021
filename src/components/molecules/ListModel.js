@@ -14,14 +14,12 @@ function MovieListElement(props) {
   ];
   return (
     <Media id={id} className="position-relative w-100 mt-3" tag="li">
-      {isOpen ? (
-        <ModalTemplate
-          isOpen={isOpen}
-          toggleVisibility={handleModal}
-          title={title}
-          iframeUrl={iframeUrl}
-        />
-      ) : null}
+      <ModalTemplate
+        isOpen={isOpen}
+        toggleVisibility={handleModal}
+        title={title}
+        iframeUrl={iframeUrl}
+      />
       <Media left href="#" className="w-auto mr-5 d-flex">
         <div className="image-container position-relative ml-0">
           {' '}
