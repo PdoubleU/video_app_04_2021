@@ -25,14 +25,12 @@ function CardModel(props) {
       </div>
 
       <CardBody className="h-100 position-relative">
-        {isOpen ? (
-          <ModalTemplate
-            isOpen={isOpen}
-            toggleVisibility={handleModal}
-            title={title}
-            iframeUrl={iframeUrl}
-          />
-        ) : null}
+        <ModalTemplate
+          isOpen={isOpen}
+          toggleVisibility={handleModal}
+          title={title}
+          iframeUrl={iframeUrl}
+        />
         <CardTitle tag="h5">{title}</CardTitle>
         <CardText>Added: {date}</CardText>
         <CardText>Viev count: {views}</CardText>
