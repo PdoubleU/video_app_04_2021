@@ -5,7 +5,6 @@ import { Container, Row } from 'reactstrap';
 
 const ControlButtonsPanel = (props) => {
   const { handleView, handleFiltering, btnValue, btnFilterValue } = props;
-  const screenWidth = window.innerWidth;
   const context = useContext(MoviesContext);
 
   return (
