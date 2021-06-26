@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Media } from 'reactstrap';
+import { Media, Collapse } from 'reactstrap';
 import useModalTemplate from '../../hooks/useModalTemplate';
 import CardButtonsPanel from '../molecules/CardButtonsPanel';
 import ModalTemplate from '../../templates/ModalTemplate';
+import ButtonModel from '../atoms/Button';
 
 function MovieListElement(props) {
   const { id, title, date, views, likes, thumbnails, liked, iframeUrl } = props;
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [{ isOpen, handleModal }] = useModalTemplate();
   const [likeIcon, unlikeIcon] = [
     ['far', 'heart'],
     ['fas', 'heart'],
   ];
+
+  const deviceWidth = window.innerWidth;
+
+  const toggle = () => setIsCollapsed(!isCollapsed);
+
   return (
     <Media id={id} className="position-relative w-100 mt-3" tag="li">
       <ModalTemplate
@@ -35,15 +42,48 @@ function MovieListElement(props) {
         </div>
       </Media>
       <Media body className="mt-3">
-        <Media heading className="w-75">
-          {title}
-        </Media>
-        Date added: {date} / Views: {views} / Likes: {likes}
-        <CardButtonsPanel
-          id={id}
-          handleModal={handleModal}
-          likeIconMode={liked ? unlikeIcon : likeIcon}
-        />
+        {deviceWidth < 810 ? (
+          <>
+            <ButtonModel
+              handleClick={toggle}
+              value="See more..."
+              style={{ marginBottom: '1rem' }}
+            >
+              See more...
+            </ButtonModel>
+            <Collapse
+              isOpen={isCollapsed}
+              className="media_body"
+              style={{
+                height: 'fit-content',
+              }}
+            >
+              <Media heading className="w-75">
+                {title}
+              </Media>
+              Date added: {date} / Views: {views} / Likes: {likes}
+              <CardButtonsPanel
+                id={id}
+                handleModal={handleModal}
+                likeIconMode={liked ? unlikeIcon : likeIcon}
+                direction=""
+              />
+            </Collapse>
+          </>
+        ) : (
+          <>
+            <Media heading className="w-75">
+              {title}
+            </Media>
+            Date added: {date} / Views: {views} / Likes: {likes}
+            <CardButtonsPanel
+              id={id}
+              handleModal={handleModal}
+              likeIconMode={liked ? unlikeIcon : likeIcon}
+              direction="column"
+            />
+          </>
+        )}
       </Media>
     </Media>
   );

@@ -26,8 +26,16 @@ a.page-link:hover {
 	right: 0;
 	width: fit-content;
 }
+.cardButtons.column {
+	top: .5rem;
+	display: flex;
+	flex-direction: column;
+}
 .cardButtons > button + button {
 	margin: 0 0 0 .5rem;
+}
+.cardButtons.column > button + button {
+	margin: 0;
 }
 .card-img-top {
 	height: 12rem;
@@ -35,6 +43,11 @@ a.page-link:hover {
 }
 
 /*custom style for media elements (either card or list model), response to diffirent image sizes downloaded as thumbnails*/
+.media_body {
+	padding: 0 0 4rem;
+	overflow: hidden;
+}
+
 li.media {
 	border: 1px solid transparent;
 	border-radius: 5px;

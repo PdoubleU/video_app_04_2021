@@ -5,11 +5,11 @@ import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const CardButtonsPanel = (props) => {
-  const { id, handleModal, likeIconMode } = props;
+  const { id, handleModal, likeIconMode, direction } = props;
   const context = useContext(MoviesContext);
 
   return (
-    <Container className="position-absolute cardButtons" id={id}>
+    <Container className={`position-absolute cardButtons ${direction}`} id={id}>
       <ButtonModel handleClick={handleModal} id="playMovie" faIcon="play" />
       <ButtonModel
         handleClick={context.toggleLike}
