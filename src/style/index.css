@@ -48,6 +48,22 @@ a.page-link:hover {
 	overflow: hidden;
 }
 
+.list_element_mob_details {
+	margin: .4rem .4rem;
+}
+.list_element_mob_details > hr {
+	width: 50%;
+	margin-left: 0;
+}
+@media (max-width: 630px) {
+	.media_heading {
+		font-size: 1rem;
+	}
+	.list_element_mob_details {
+		font-size: .6rem;
+	}
+}
+
 li.media {
 	border: 1px solid transparent;
 	border-radius: 5px;
@@ -60,8 +76,8 @@ div.card:hover {
 }
 img.media-object{
 	float: left;
-    width:  8rem;
-    height: 8rem;
+    width:  9rem;
+    height: 9rem;
     object-fit: cover;
 	border-radius: 5px;
 	transition: all .3s ease;
